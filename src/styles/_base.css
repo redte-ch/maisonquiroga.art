@@ -1,0 +1,16 @@
+html {
+    @apply bg-neutral !important;
+    @apply text-primary !important;
+}
+
+body {
+    @apply grid !important;
+    @apply min-h-screen !important;
+    @apply place-items-center !important;
+}
+
+main {
+    @apply m-8 !important;
+    @apply max-w-4xl !important;
+    @apply text-left !important;
+}

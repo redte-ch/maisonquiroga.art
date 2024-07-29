@@ -1,0 +1,18 @@
+h1 {
+    @apply mb-4 !important;
+    @apply text-5xl !important;
+    @apply font-black !important;
+}
+
+h2 {
+    @apply mb-2 !important;
+    @apply text-2xl !important;
+    @apply font-bold !important;
+    @apply text-secondary !important;
+}
+
+p {
+    @apply text-lg !important;
+    @apply font-normal !important;
+    @apply text-primary !important;
+}

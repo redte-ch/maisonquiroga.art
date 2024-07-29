@@ -1,0 +1,21 @@
+{
+  "name": "@bonjourmauko/redtech",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "astro": "astro",
+    "start": "astro dev",
+    "build": "astro build",
+    "format": "ts-standard --fix",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^5.0.2",
+    "astro": "^3.4.2",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "ts-standard": "^12.0.2",
+    "typescript": "<=5.2.0"
+  }
+}

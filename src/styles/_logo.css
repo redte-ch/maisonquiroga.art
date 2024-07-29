@@ -1,0 +1,4 @@
+.logo {
+    @apply -mb-24;
+    @apply pt-16 pr-16 pl-16;
+}
