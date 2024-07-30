@@ -7,12 +7,16 @@
     "start": "astro dev",
     "build": "astro build",
     "format": "prettier . --write",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^5.0.2",
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "astro": "^3.4.2",
     "autoprefixer": "^10.4.16",
+    "husky": "^9.1.4",
     "postcss": "^8.4.31",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
