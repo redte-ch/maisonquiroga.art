@@ -1,42 +1,38 @@
 ---
 import Logo from './Logo.astro';
+
+const { logo: { alt, src} } = Astro.props
+const h1 = {
+    '*': 'RQV',
+    sm: 'Roberto',
+    md: 'Quiroga',
+    lg: 'Valdovinos'
+}
+const h2 = {
+    '*': 'Peintre',
+    sm: 'Artiste',
+    md: 'Valparaíso',
+    lg: 'Chili'
+
+}
 ---
 
 <header class="Header">
-    <Logo src="/images/logo.jpg" alt="Logo de Maison Quiroga"/>
-
-    <h1 class="Header-h1">
-        RQV
-    </h1>
-
-    <h1 class="Header-h1-sm">
-        Roberto
-    </h1>
-
-    <h1 class="Header-h1-md">
-        Roberto Quiroga
-    </h1>
-
-    <h1 class="Header-h1-lg">
-        Roberto Quiroga Valdovinos
-    </h1>
-
-    <h2 class="Header-h2">
-        Peintre.
-    </h2>
-
-    <h2 class="Header-h2-sm">
-        Artiste peintre.
-    </h2>
-
+    <Logo alt={alt} src={src}/>
+    <h1 class="Header-h1">{h1['*']}</h1>
+    <h1 class="Header-h1-sm">{h1.sm}</h1>
+    <h1 class="Header-h1-md">{h1.sm + " " + h1.md}</h1>
+    <h1 class="Header-h1-lg">{h1.sm + " " + h1.md + " " + h1.lg}</h1>
+    <h2 class="Header-h2">{h2['*']}.</h2>
+    <h2 class="Header-h2-sm">{h2.sm + " " + h2['*']}.</h2>
     <h2 class="Header-h2-md">
-        Artiste peintre.
-        <span class="Header-h2--light">Valparaíso.</span>
+        {h2.sm + " " + h2['*']}.
+        <span class="Header-h2--light">{h2.md}.</span>
     </h2>
 
     <h2 class="Header-h2-lg">
-        Artiste peintre.
-        <span class="Header-h2--light">Valparaíso, Chili.</span>
+        {h2.sm + " " + h2['*']}.
+        <span class="Header-h2--light">{h2.md}, {h2.lg}.</span>
     </h2>
 </header>
 

@@ -1,14 +1,9 @@
 ---
-const { src, alt, ...rest } = Astro.props
+const { src, alt } = Astro.props
 ---
 
 <div class="Logo">
-    <img
-        class="Logo-img"
-        src={ src }
-        alt={ alt }
-        { ...rest }
-    />
+    <img class="Logo-img" src={ src } alt={ alt }/>
 </div>
 
 <style>

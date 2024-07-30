@@ -1,16 +1,11 @@
 ---
-const footerItems = [
-    {
-        text: 'redtech',
-        href: 'https://redte.ch',
-    }
-]
+const { items } = Astro.props
 ---
 
 <footer class="Footer">
     <p class="Footer-p">
         <span class="Footer-p-span">; </span>
-        {footerItems.map(({text, href}) => (
+        {items.map(({text, href}) => (
             <a class="Footer-p-a" href={href}>{text}</a>
         ))}
 

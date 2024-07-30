@@ -3,16 +3,60 @@ import Head from "../components/Head.astro"
 import Header from "../components/Header.astro"
 import Nav from "../components/Nav.astro"
 import Footer from "../components/Footer.astro"
+
+const head = {
+    title: "Maison Quiroga",
+    author: "Roberto Quiroga Valdovinos",
+    description: `
+        Roberto Quiroga Valdovinos. Artiste peintre. Œuvres et contact : 
+        @maisonquiroga (Instagram). Exposition permanente : Lautaro Rosas 558 
+        Cerro Alegre, Valparaíso, Chili.
+    `
+}
+
+const header = {
+    logo: {
+        alt: 'Logo de Maison Quiroga',
+        src: '/images/logo.jpg'
+    }
+}
+
+const navItems = [
+    {
+        text: '/Œuvres choisies',
+        href: 'https://www.instagram.com/maisonquiroga/'
+    },
+    {
+        text: '/Contact',
+        href: 'mailto:roberto@maisonquiroga.art'
+    },
+    {
+        text: '/Adresse',
+        href: 'https://www.openstreetmap.org/way/1304668361'
+    }
+]
+
+const footerItems = [
+    {
+        text: 'redtech',
+        href: 'https://redte.ch',
+    }
+]
 ---
 
 <html lang="fr">
-    <Head />
+    <Head
+        title={head.title}
+        author={head.author}
+        description={head.description}
+    />
+
     <body>
         <main>
-            <Header />
-            <Nav />
+            <Header logo={header.logo}/>
+            <Nav items={navItems}/>
             <slot />
-            <Footer />
+            <Footer items={footerItems}/>
         </main>
     </body>
 </html>
