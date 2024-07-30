@@ -2,23 +2,27 @@
 const { items } = Astro.props
 ---
 
-<footer class="Footer">
-    <p class="Footer-p">
-        <span class="Footer-p-span">; </span>
-        {items.map(({text, href}) => (
-            <a class="Footer-p-a" href={href}>{text}</a>
-        ))}
+<footer class='Footer'>
+  <p class='Footer-p'>
+    <span class='Footer-p-span'>; </span>
+    {
+      items.map(({ text, href }) => (
+        <a class='Footer-p-a' href={href}>
+          {text}
+        </a>
+      ))
+    }
 
-        <span class="Footer-p-span"> .</span>
-    </p>
+    <span class='Footer-p-span'> .</span>
+  </p>
 </footer>
 
 <style>
-    .Footer-p-span {
-        @apply font-bold;
-    }
+  .Footer-p-span {
+    @apply font-bold;
+  }
 
-    .Footer-p-a {
-        @apply text-sm;
-    }
+  .Footer-p-a {
+    @apply text-sm;
+  }
 </style>

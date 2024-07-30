@@ -1,17 +1,17 @@
-[class*="column"] {
-    @apply grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 !important;
+[class*='column'] {
+  @apply grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 !important;
 }
 
-[class*="column"] p {
-    @apply mt-2 !important;
+[class*='column'] p {
+  @apply mt-2 !important;
 }
 
-[class*="column"] p.row-l {
-    @apply col-start-1 !important;
-    @apply font-normal !important;
+[class*='column'] p.row-l {
+  @apply col-start-1 !important;
+  @apply font-normal !important;
 }
 
-[class*="column"] p.row-r {
-    @apply col-start-2 col-span-5 sm:col-span-7 md:col-span-9 !important;
-    @apply font-light !important;
+[class*='column'] p.row-r {
+  @apply col-start-2 col-span-5 sm:col-span-7 md:col-span-9 !important;
+  @apply font-light !important;
 }

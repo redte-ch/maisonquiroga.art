@@ -1,7 +1,7 @@
-@import "_base.css";
-@import "_font.css";
-@import "_blocks.css";
-@import "_text.css";
+@import '_base.css';
+@import '_font.css';
+@import '_blocks.css';
+@import '_text.css';
 
 @tailwind base;
 @tailwind components;

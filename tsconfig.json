@@ -6,6 +6,7 @@
     "noEmit": true,
     "resolveJsonModule": true,
     "strictNullChecks": true,
-    "target": "ESNext",
-  }
+    "target": "ESNext"
+  },
+  "exclude": [".editorconfig"]
 }

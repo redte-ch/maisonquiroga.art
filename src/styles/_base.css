@@ -1,24 +1,27 @@
 html {
-    @apply bg-white !important;
-    @apply text-primary !important;
+  @apply bg-white !important;
+  @apply text-primary !important;
 }
 
 body {
-    @apply grid !important;
-    @apply min-h-screen !important;
-    @apply place-items-center !important;
+  @apply grid !important;
+  @apply min-h-screen !important;
+  @apply place-items-center !important;
 }
 
 main {
-    @apply m-8 !important;
-    @apply max-w-4xl !important;
-    @apply text-left !important;
+  @apply m-8 !important;
+  @apply max-w-4xl !important;
+  @apply text-left !important;
 }
 
-header, nav, section, footer {
-    @apply pt-8 pl-8 pr-8 !important;
+header,
+nav,
+section,
+footer {
+  @apply pt-8 pl-8 pr-8 !important;
 }
 
 figcaption {
-    @apply sr-only !important;
+  @apply sr-only !important;
 }
