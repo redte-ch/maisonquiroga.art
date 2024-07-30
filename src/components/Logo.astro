@@ -1,7 +1,22 @@
 ---
-const { class: className, src, ...rest } = Astro.props
+const { src, alt, ...rest } = Astro.props
 ---
 
-<div class={ className }>
-    <img src={ src } { ...rest } class="w-20 h-20" alt="Logo"/>
+<div class="Logo">
+    <img
+        class="Logo-img"
+        src={ src }
+        alt={ alt }
+        { ...rest }
+    />
 </div>
+
+<style>
+    .Logo {
+        @apply -mb-20;
+    }
+
+    .Logo-img {
+        @apply w-20 h-20;
+    }
+</style>

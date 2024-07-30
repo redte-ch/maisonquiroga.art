@@ -1,10 +1,7 @@
 @import "_base.css";
 @import "_font.css";
 @import "_blocks.css";
-@import "_hero.css";
-@import "_logo.css";
 @import "_text.css";
-@import "_social.css";
 
 @tailwind base;
 @tailwind components;

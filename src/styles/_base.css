@@ -15,6 +15,6 @@ main {
     @apply text-left !important;
 }
 
-section {
-    @apply pl-8 pr-8 !important;
+header, nav, section, footer {
+    @apply pt-8 pl-8 pr-8 !important;
 }

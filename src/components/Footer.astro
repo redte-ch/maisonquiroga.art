@@ -1,7 +1,29 @@
 ---
-const redtech = 'https://redte.ch'
+const footerItems = [
+    {
+        text: 'redtech',
+        href: 'https://redte.ch',
+    }
+]
 ---
 
-<footer class="mt-8 ml-7">
-  <p><b>; </b><a href={redtech}>redtech</a><b> .</b></p>
+<footer class="Footer">
+    <p class="Footer-p">
+        <span class="Footer-p-span">; </span>
+        {footerItems.map(({text, href}) => (
+            <a class="Footer-p-a" href={href}>{text}</a>
+        ))}
+
+        <span class="Footer-p-span"> .</span>
+    </p>
 </footer>
+
+<style>
+    .Footer-p-span {
+        @apply font-bold;
+    }
+
+    .Footer-p-a {
+        @apply text-sm;
+    }
+</style>

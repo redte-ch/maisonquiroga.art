@@ -1,0 +1,25 @@
+---
+const navItems = [
+    {
+        text: '/Œuvres choisies',
+        href: 'https://www.instagram.com/maisonquiroga/'
+    },
+    {
+        text: '/Contact',
+        href: 'mailto:roberto@maisonquiroga.art'
+    }
+]
+---
+
+<nav class="Nav">
+    {navItems.map(({ text, href }) => (
+        <a class="Nav-a" href={href}>{text}</a>
+    ))}
+</nav>
+
+<style>
+    .Nav-a {
+        @apply pr-8;
+        @apply text-lg;
+    }
+</style>

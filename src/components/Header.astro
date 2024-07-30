@@ -1,0 +1,63 @@
+---
+import Logo from './Logo.astro';
+---
+
+<header class="Header">
+    <Logo src="/images/logo.jpg" alt="Logo de Maison Quiroga"/>
+
+    <h1 class="Header-h1">
+        RQV
+    </h1>
+
+    <h1 class="Header-h1-sm">
+        Roberto
+    </h1>
+
+    <h1 class="Header-h1-md">
+        Roberto Quiroga
+    </h1>
+
+    <h1 class="Header-h1-lg">
+        Roberto Quiroga Valdovinos
+    </h1>
+
+    <h2 class="Header-h2">
+        Peintre.
+    </h2>
+
+    <h2 class="Header-h2-sm">
+        Artiste peintre.
+    </h2>
+
+    <h2 class="Header-h2-md">
+        Artiste peintre.
+        <span class="Header-h2--light">Valparaíso.</span>
+    </h2>
+
+    <h2 class="Header-h2-lg">
+        Artiste peintre.
+        <span class="Header-h2--light">Valparaíso, Chili.</span>
+    </h2>
+</header>
+
+<style>
+    .Header-h1, .Header-h2 {
+        @apply block sm:hidden;
+    }
+
+    .Header-h1-sm, .Header-h2-sm {
+        @apply hidden sm:block md:hidden;
+    }
+
+    .Header-h1-md, .Header-h2-md {
+        @apply hidden md:block lg:hidden;
+    }
+
+    .Header-h1-lg, .Header-h2-lg {
+        @apply hidden lg:block;
+    }
+
+    .Header-h2--light {
+        @apply text-gray-300;
+    }
+</style>

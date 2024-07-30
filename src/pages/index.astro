@@ -1,67 +1,22 @@
 ---
-import Logo from "../components/Logo.astro"
-import Hero from "../components/Hero.astro"
-import Social from "../components/Social.astro"
 import Home from "../layouts/Home.astro"
+import Bio from "../components/Bio.astro"
+
+const bio = `
+    Né en 1953 à Viña del Mar, Chili, Roberto Quiroga Valdovinos a reçu
+    sa formation d'art à l'Escuela de Bellas Artes de Viña del Mar en
+    1970 et à l'Université de Concepción en 1973. Il a étudié sous la
+    direction de Teresa Vidal, Ismael Pinto, Julio Escamez, Tole
+    Peralta, Albino Echeverría, et Maisner Ordoñez. À la suite du
+    sanglant coup d'État de 1973, il s'est vu contraint de quitter le
+    pays pour emprunter le chemin de l'exil, ce qui a imprimé une
+    marque décisive sur son œuvre. Aujourd'hui, il dirige la Galerie
+    Lugar Inamible et expose ses travaux au Café Zeit.
+`
 ---
 
 <Home>
-    <Logo
-        class="logo"
-        src="/images/logo.png"
-        alt="Red Innovation Logo"
-    />
-
-    <Hero class="hero">
-        <h1 class="block md:hidden">
-            RGQV
-        </h1>
-
-        <h1 class="hidden md:block lg:hidden">
-            Roberto Quiroga
-        </h1>
-
-        <h1 class="hidden lg:block 3xl:hidden">
-            Roberto Quiroga Valdovinos
-        </h1>
-
-        <h1 class="hidden 3xl:block">
-            Roberto Gerardo Quiroga Valdovinos
-        </h1>
-
-        <h2 class="block sm:hidden">
-            Peintre.
-        </h2>
-
-        <h2 class="hidden sm:block md:hidden">
-            Artiste peintre.
-        </h2>
-
-        <h2 class="hidden md:block lg:hidden">
-            Artiste peintre. <span>Valparaíso.</span>
-        </h2>
-
-        <h2 class="hidden lg:block">
-            Artiste peintre. <span>Valparaíso, Chili.</span>
-        </h2>
-
-        <p>
-            Né en 1953 à Viña del Mar, Chili, Roberto Quiroga Valdovinos a reçu
-            sa formation d'art à l'Escuela de Bellas Artes de Viña del Mar en
-            1970 et à l'Université de Concepción en 1973. Il a étudié sous la
-            direction de Teresa Vidal, Ismael Pinto, Julio Escamez, Tole
-            Peralta, Albino Echeverría, et Maisner Ordoñez. À la suite du
-            sanglant coup d'État de 1973, il s'est vu contraint de quitter le
-            pays pour emprunter le chemin de l'exil, ce qui a imprimé une
-            marque décisive sur son œuvre. Aujourd'hui, il dirige la Galerie
-            Lugar Inamible et expose ses travaux au Café Zeit.
-        </p>
-    </Hero>
-
-    <Social
-        instagram="https://www.instagram.com/maisonquiroga/"
-        email="mailto:roberto@maisonquiroga.art"
-    />
+    <Bio text={bio} />
 
     <section class="block-v">
         <h3>[Expositions personnelles]</h3>
