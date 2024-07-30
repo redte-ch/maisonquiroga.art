@@ -10,6 +10,7 @@ h2 {
     @apply pl-8 !important;
     @apply text-4xl !important;
     @apply font-bold !important;
+    @apply lowercase !important;
     @apply text-secondary !important;
 }
 
@@ -17,8 +18,29 @@ h2 span {
     @apply text-gray-300 !important;
 }
 
+h3 {
+    @apply mt-8 mr-16 !important;
+    @apply text-sm !important;
+    @apply font-bold !important;
+    @apply lowercase !important;
+    @apply text-gray-900 !important;
+}
+
 p {
-    @apply text-lg !important;
+    @apply mt-8 mr-16 !important;
+    @apply text-sm !important;
+    @apply font-light !important;
+    @apply text-gray-700 !important;
+}
+
+a {
+    @apply text-sm !important;
+    @apply underline !important;
+    @apply lowercase !important;
     @apply font-normal !important;
+    @apply text-secondary !important;
+}
+
+a:hover {
     @apply text-primary !important;
 }

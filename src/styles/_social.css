@@ -1,0 +1,3 @@
+[class*="social"] a {
+    @apply mr-4 !important;
+}

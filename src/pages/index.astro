@@ -1,6 +1,7 @@
 ---
 import Logo from "../components/Logo.astro"
 import Hero from "../components/Hero.astro"
+import Social from "../components/Social.astro"
 import Home from "../layouts/Home.astro"
 ---
 
@@ -29,21 +30,132 @@ import Home from "../layouts/Home.astro"
         </h1>
 
         <h2 class="block sm:hidden">
-            peintre.
+            Peintre.
         </h2>
 
         <h2 class="hidden sm:block md:hidden">
-            artiste peintre.
+            Artiste peintre.
         </h2>
 
         <h2 class="hidden md:block lg:hidden">
-            artiste peintre. <span>valparaíso.</span>
+            Artiste peintre. <span>Valparaíso.</span>
         </h2>
 
         <h2 class="hidden lg:block">
-            artiste peintre. <span>valparaíso, chili.</span>
+            Artiste peintre. <span>Valparaíso, Chili.</span>
         </h2>
 
-        <p></p>
+        <p>
+            Né en 1953 à Viña del Mar, Chili, Roberto Quiroga Valdovinos a reçu
+            sa formation d'art à l'Escuela de Bellas Artes de Viña del Mar en
+            1970 et à l'Université de Concepción en 1973. Il a étudié sous la
+            direction de Teresa Vidal, Ismael Pinto, Julio Escamez, Tole
+            Peralta, Albino Echeverría, et Maisner et Ordoñez. À la suite du
+            sanglant coup d'État de 1973, il s'est vu contraint de quitter le
+            pays pour emprunter le chemin de l'exil, ce qui a imprimé une
+            marque décisive sur son œuvre. Aujourd'hui, il dirige la Galerie
+            Lugar Inamible et expose ses travaux au Café Zeit.
+        </p>
     </Hero>
+
+    <Social
+        instagram="https://www.instagram.com/maisonquiroga/"
+        email="mailto:roberto@maisonquiroga.art"
+    />
+
+    <section class="block-v">
+        <h3>[Expositions personnelles]</h3>
+
+        <div class="column">
+            <p class="row-l">2024</p>
+            <p class="row-r">
+                Exposition de peintures récentes. Acrylique sur toile. Café
+                Zeit, Valparaíso.
+            </p>
+        </div>
+
+        <div class="column">
+            <p class="row-l">2015</p>
+            <p class="row-r">
+                Exposition permanente. Acrylique sur toile, sérigraphie,
+                gravure en métal, offset. Galerie Lugar Inamible, Valparaíso.
+            </p>
+        </div>
+    </section>
+
+    <section class="block-v">
+        <h3>[Expositions de groupe]</h3>
+
+        <div class="column">
+            <p class="row-l">1978</p>
+            <p class="row-r">
+                Performances culturelles et solidaires avec et en soutien des
+                victimes de la dictature. Peinture, théâtre, guitare, chanson
+                populaire. Santiago.
+            </p>
+        </div>
+    </section>
+
+    <section class="block-v">
+        <h3>[Résidences]</h3>
+
+        <div class="column">
+            <p class="row-l">2015</p>
+            <p class="row-r">
+                Gravure. Museo del grabado. Valparaíso.
+            </p>
+        </div>
+
+
+        <div class="column">
+            <p class="row-l">2014</p>
+            <p class="row-r">
+                Gravure. Taller de grabado Casaplan. Valparaíso.
+            </p>
+        </div>
+    </section>
+
+    <section class="block-v">
+        <h3>[Interventions]</h3>
+
+        <div class="column">
+            <p class="row-l">2015</p>
+            <p class="row-r">
+                Gravure en métal, offset. Valparaíso.
+            </p>
+        </div>
+
+        <div class="column">
+            <p class="row-l">1990</p>
+            <p class="row-r">
+                Sérigraphie, gravure. Valparaíso.
+            </p>
+        </div>
+    </section>
+
+    <section class="block-v">
+        <h3>[Formation]</h3>
+
+        <div class="column">
+            <p class="row-l">1990</p>
+            <p class="row-r">
+                Guitare classique. Conservatoire de la Pontificia Universidad
+                Católica. Valparaíso.
+            </p>
+        </div>
+
+        <div class="column">
+            <p class="row-l">1973</p>
+            <p class="row-r">
+                Licence en art. Universidad de Concepción. Concepción.
+            </p>
+        </div>
+
+        <div class="column">
+            <p class="row-l">1970</p>
+            <p class="row-r">
+                Dessin et peinture. Beaux-Arts. Viña del Mar.
+            </p>
+        </div>
+    </section>
 </Home>
