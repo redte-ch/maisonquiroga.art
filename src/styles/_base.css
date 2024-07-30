@@ -1,5 +1,5 @@
 html {
-    @apply bg-neutral !important;
+    @apply bg-white !important;
     @apply text-primary !important;
 }
 

@@ -1,4 +1,4 @@
 .hero {
     @apply bg-white;
-    @apply pt-32 pr-16 pb-16 pl-16;
+    @apply p-8;
 }

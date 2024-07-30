@@ -6,10 +6,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        white: '#e2e7e9',
-        neutral: '#dee3e5',
+        white: '#ffffff',
         primary: '#000000',
-        secondary: '#e52043'
+        secondary: '#db0019'
       },
       fontFamily: {
         sans: ['AkzidenzGrotesk', ...defaultTheme.fontFamily.sans]
