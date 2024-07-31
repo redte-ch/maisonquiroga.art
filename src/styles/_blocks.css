@@ -12,6 +12,6 @@
 }
 
 [class*='column'] p.row-r {
-  @apply col-start-2 col-span-5 sm:col-span-7 md:col-span-9 !important;
+  @apply col-span-5 col-start-2 sm:col-span-7 md:col-span-9 !important;
   @apply font-light !important;
 }
