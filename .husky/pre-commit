@@ -1,2 +1,4 @@
 yarn run format
-yarn run lint
+yarn run check:astro
+yarn run check:eslint
+yarn run check:stylelint

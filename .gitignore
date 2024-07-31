@@ -1,4 +1,5 @@
 .idea
+.yarn
 dist
 node_modules
 

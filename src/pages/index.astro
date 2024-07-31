@@ -1,6 +1,8 @@
 ---
 import Home from '../layouts/Home.astro'
 import Bio from '../components/Bio.astro'
+import Curriculum from '../components/Curriculum.astro'
+import imgRoberto from '../assets/images/roberto.jpg'
 
 const bio = {
   title: 'Biographie de Roberto Quiroga Valdovinos',
@@ -16,98 +18,107 @@ const bio = {
         Lugar Inamible et expose ses travaux au Café Zeit.
     `,
   figure: {
-    src: '/images/roberto.jpg',
+    src: imgRoberto,
     alt: 'Roberto Quiroga Valdovinos',
     caption: 'Portrait de Roberto Quiroga Valdovinos en 2024 à Valparaíso'
   }
 }
+
+const cv = [
+  {
+    title: 'Expositions personnelles',
+    items: [
+      {
+        year: 2024,
+        text: `
+          Exposition de peintures récentes. Acrylique sur toile. Café Zeit,
+          Valparaíso.
+        `
+      },
+      {
+        year: 2015,
+        text: `
+          Exposition permanente. Acrylique sur toile, sérigraphie, gravure en
+          métal, offset. Galerie Lugar Inamible, Valparaíso.
+        `
+      }
+    ]
+  },
+  {
+    title: 'Expositions collectives',
+    items: [
+      {
+        year: 1978,
+        text: `
+          Performances culturelles et solidaires avec et en soutien des
+          victimes de la dictature. Peinture, théâtre, guitare, chanson
+          populaire. Santiago.
+        `
+      }
+    ]
+  },
+  {
+    title: 'Résidences',
+    items: [
+      {
+        year: 2015,
+        text: `
+          Musée d'art contemporain de Valparaíso. Acrylique sur toile.
+        `
+      },
+      {
+        year: 2014,
+        text: `
+          Gravure. Taller de grabado Casaplan. Valparaíso.
+        `
+      }
+    ]
+  },
+  {
+    title: 'Interventions',
+    items: [
+      {
+        year: 2015,
+        text: `
+          Gravure en métal, offset. Valparaíso.
+        `
+      },
+      {
+        year: 1990,
+        text: `
+          Sérigraphie, gravure. Valparaíso.
+        `
+      }
+    ]
+  },
+  {
+    title: 'Formation',
+    items: [
+      {
+        year: 1990,
+        text: `
+          Guitare classique. Conservatoire de la Pontificia Universidad
+          Católica. Valparaíso.
+        `
+      },
+      {
+        year: 1973,
+        text: `
+          Licence en art. Université de Concepción. Concepción.
+        `
+      },
+      {
+        year: 1970,
+        text: `
+          Dessin et peinture. Beaux-Arts. Viña del Mar.
+        `
+      }
+    ]
+  }
+]
 ---
 
 <Home>
   <Bio title={bio.title} text={bio.text} figure={bio.figure} />
-
-  <section class='block-v'>
-    <h3>[Expositions personnelles]</h3>
-
-    <div class='column'>
-      <p class='row-l'>2024</p>
-      <p class='row-r'>
-        Exposition de peintures récentes. Acrylique sur toile. Café Zeit,
-        Valparaíso.
-      </p>
-    </div>
-
-    <div class='column'>
-      <p class='row-l'>2015</p>
-      <p class='row-r'>
-        Exposition permanente. Acrylique sur toile, sérigraphie, gravure en
-        métal, offset. Galerie Lugar Inamible, Valparaíso.
-      </p>
-    </div>
-  </section>
-
-  <section class='block-v'>
-    <h3>[Expositions de groupe]</h3>
-
-    <div class='column'>
-      <p class='row-l'>1978</p>
-      <p class='row-r'>
-        Performances culturelles et solidaires avec et en soutien des victimes
-        de la dictature. Peinture, théâtre, guitare, chanson populaire.
-        Santiago.
-      </p>
-    </div>
-  </section>
-
-  <section class='block-v'>
-    <h3>[Résidences]</h3>
-
-    <div class='column'>
-      <p class='row-l'>2015</p>
-      <p class='row-r'>Gravure. Museo del grabado. Valparaíso.</p>
-    </div>
-
-    <div class='column'>
-      <p class='row-l'>2014</p>
-      <p class='row-r'>Gravure. Taller de grabado Casaplan. Valparaíso.</p>
-    </div>
-  </section>
-
-  <section class='block-v'>
-    <h3>[Interventions]</h3>
-
-    <div class='column'>
-      <p class='row-l'>2015</p>
-      <p class='row-r'>Gravure en métal, offset. Valparaíso.</p>
-    </div>
-
-    <div class='column'>
-      <p class='row-l'>1990</p>
-      <p class='row-r'>Sérigraphie, gravure. Valparaíso.</p>
-    </div>
-  </section>
-
-  <section class='block-v'>
-    <h3>[Formation]</h3>
-
-    <div class='column'>
-      <p class='row-l'>1990</p>
-      <p class='row-r'>
-        Guitare classique. Conservatoire de la Pontificia Universidad Católica.
-        Valparaíso.
-      </p>
-    </div>
-
-    <div class='column'>
-      <p class='row-l'>1973</p>
-      <p class='row-r'>
-        Licence en art. Universidad de Concepción. Concepción.
-      </p>
-    </div>
-
-    <div class='column'>
-      <p class='row-l'>1970</p>
-      <p class='row-r'>Dessin et peinture. Beaux-Arts. Viña del Mar.</p>
-    </div>
-  </section>
+  {cv.map(({ title, items }) => <Curriculum title={title} items={items} />)}
 </Home>

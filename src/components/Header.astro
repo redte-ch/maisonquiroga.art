@@ -39,6 +39,36 @@ const h2 = {
 
 <style>
   .Header-h1,
+  .Header-h1-sm,
+  .Header-h1-md,
+  .Header-h1-lg {
+    @apply text-5xl;
+    @apply text-primary;
+  }
+
+  .Header-h2,
+  .Header-h2-sm,
+  .Header-h2-md,
+  .Header-h2-lg {
+    @apply text-4xl;
+    @apply lowercase;
+    @apply text-secondary;
+  }
+
+  .Header-h1,
+  .Header-h1-sm,
+  .Header-h1-md,
+  .Header-h1-lg,
+  .Header-h2,
+  .Header-h2-sm,
+  .Header-h2-md,
+  .Header-h2-lg {
+    @apply ml-16;
+    @apply pl-8;
+    @apply font-bold;
+  }
+
+  .Header-h1,
   .Header-h2 {
     @apply block sm:hidden;
   }

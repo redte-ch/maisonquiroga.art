@@ -3,13 +3,14 @@ import Head from '../components/Head.astro'
 import Header from '../components/Header.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
+import imgLogo from '../assets/images/logo.jpg'
 
 const head = {
   title: 'Maison Quiroga',
   author: 'Roberto Quiroga Valdovinos',
   description: `
-        Roberto Quiroga Valdovinos. Artiste peintre. Œuvres et contact : 
-        @maisonquiroga (Instagram). Exposition permanente : Lautaro Rosas 558 
+        Roberto Quiroga Valdovinos. Artiste peintre. Œuvres et contact :
+        @maisonquiroga (Instagram). Exposition permanente : Lautaro Rosas 558
         Cerro Alegre, Valparaíso, Chili.
     `
 }
@@ -17,21 +18,21 @@ const head = {
 const header = {
   logo: {
     alt: 'Logo de Maison Quiroga',
-    src: '/images/logo.jpg'
+    src: imgLogo
   }
 }
 
 const navItems = [
   {
-    text: '/Œuvres choisies',
+    text: 'Œuvres choisies',
     href: 'https://www.instagram.com/maisonquiroga/'
   },
   {
-    text: '/Contact',
+    text: 'Contact',
     href: 'mailto:roberto@maisonquiroga.art'
   },
   {
-    text: '/Adresse',
+    text: 'Adresse',
     href: 'https://www.openstreetmap.org/way/1304668361'
   }
 ]

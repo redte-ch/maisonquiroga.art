@@ -1,0 +1,16 @@
+p {
+  @apply text-sm !important;
+  @apply font-light !important;
+  @apply text-gray-700 !important;
+}
+
+a {
+  @apply underline !important;
+  @apply lowercase !important;
+  @apply font-normal !important;
+  @apply text-secondary !important;
+}
+
+a:hover {
+  @apply text-primary !important;
+}
