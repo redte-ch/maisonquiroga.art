@@ -24,6 +24,8 @@
     "astro": "^4.12.3",
     "astro-better-image-service": "^2.0.12",
     "astro-eslint-parser": "^1.0.2",
+    "astro-meta-tags": "^0.3.0",
+    "astro-page-insight": "^0.8.5",
     "autoprefixer": "^10.4.19",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.1.0",
