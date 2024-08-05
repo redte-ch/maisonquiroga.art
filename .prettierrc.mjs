@@ -21,7 +21,11 @@ export default {
   useTabs: false,
   vueIndentScriptAndStyle: false,
   // Astro
-  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
+  plugins: [
+    'prettier-plugin-astro',
+    'prettier-plugin-svelte',
+    'prettier-plugin-tailwindcss'
+  ],
   overrides: [
     {
       files: '*.astro',

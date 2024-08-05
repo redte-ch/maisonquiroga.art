@@ -28,8 +28,20 @@ module.exports = [
     }
   },
   {
+    files: ['**/*.svelte'],
+    languageOptions: {
+      parser: require('svelte-eslint-parser'),
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        project: './tsconfig.json',
+        extraFileExtensions: ['.svelte']
+      }
+    }
+  },
+  {
     rules: {
       '@stylistic/comma-dangle': 'off',
+      'functional/no-let': 'off',
       'tailwindcss/no-custom-classname': 'off'
     }
   }

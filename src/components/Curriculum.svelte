@@ -1,21 +1,24 @@
----
-const { title, items } = Astro.props
----
+<script lang="ts">
+  export let title: string
+  export let items: { year: number; text: string }[]
+</script>
 
-<section class='Curriculum'>
-  <h1 class='Curriculum-h1'>[{title}]</h1>
+<section class="Curriculum">
+  <h1 class="Curriculum-h1">[{title}]</h1>
 
-  {
-    items.map(({ year, text }) => (
-      <div class='Curriculum-col'>
-        <p class='Curriculum-col-row-left'>{year}</p>
-        <p class='Curriculum-col-row-right'>{text}</p>
-      </div>
-    ))
-  }
+  {#each items as { year, text }}
+    <div class="Curriculum-col">
+      <p class="Curriculum-col-row-left">{year}</p>
+      <p class="Curriculum-col-row-right">{text}</p>
+    </div>
+  {/each}
 </section>
 
 <style>
+  .Curriculum {
+    @apply animate-fade;
+  }
+
   .Curriculum-h1 {
     @apply text-sm;
     @apply font-bold;

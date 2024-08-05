@@ -1,12 +1,23 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
     "isolatedModules": true,
+    "paths": {
+      "@images/*": ["src/assets/images/*"],
+      "@styles/*": ["src/assets/styles/*"],
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@pages/*": ["src/pages/*"],
+      "@root/*": ["*"]
+    },
     "module": "ESNext",
     "moduleResolution": "node",
     "noEmit": true,
     "resolveJsonModule": true,
     "strictNullChecks": true,
-    "target": "ESNext"
-  }
+    "target": "ESNext",
+    "verbatimModuleSyntax": true
+  },
+  "extends": "astro/tsconfigs/base"
 }

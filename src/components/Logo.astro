@@ -4,7 +4,6 @@ import { Image } from 'astro:assets'
 const { src, alt } = Astro.props
 const width = 80
 const height = 80
-const densities = [1.5, 2, 4, 8]
 ---
 
 <div class='Logo'>
@@ -14,13 +13,13 @@ const densities = [1.5, 2, 4, 8]
     alt={alt}
     width={width}
     height={height}
-    densities={densities}
     loading='eager'
   />
 </div>
 
 <style>
   .Logo {
+    @apply animate-fade-up-out;
     @apply -mb-20;
   }
 </style>

@@ -1,8 +1,8 @@
 ---
-import Home from '../layouts/Home.astro'
-import Bio from '../components/Bio.astro'
-import Curriculum from '../components/Curriculum.astro'
-import imgRoberto from '../assets/images/roberto.jpg'
+import Home from '@layouts/Home.astro'
+import Bio from '@components/Bio.astro'
+import Curriculum from '@components/Curriculum.svelte'
+import imgRoberto from '@images/roberto.jpg'
 
 const bio = {
   title: 'Biographie de Roberto Quiroga Valdovinos',
@@ -119,6 +119,6 @@ const cv = [
 ---
 
 <Home>
-  <Bio title={bio.title} text={bio.text} figure={bio.figure} />
-  {cv.map(({ title, items }) => <Curriculum title={title} items={items} />)}
+  <Bio {...bio} />
+  {cv.map(({ title, items }) => <Curriculum {title} {items} />)}
 </Home>

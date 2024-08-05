@@ -1,9 +1,8 @@
 ---
-import Logo from './Logo.astro'
+import Logo from '@components/Logo.astro'
+import HeaderTitle from '@components/HeaderTitle.svelte'
 
-const {
-  logo: { alt, src }
-} = Astro.props
+const { logo } = Astro.props
 const h1 = {
   '*': 'RQV',
   sm: 'Roberto',
@@ -19,76 +18,6 @@ const h2 = {
 ---
 
 <header class='Header'>
-  <Logo alt={alt} src={src} />
-  <h1 class='Header-h1'>{h1['*']}</h1>
-  <h1 class='Header-h1-sm'>{h1.sm}</h1>
-  <h1 class='Header-h1-md'>{h1.sm + ' ' + h1.md}</h1>
-  <h1 class='Header-h1-lg'>{h1.sm + ' ' + h1.md + ' ' + h1.lg}</h1>
-  <h2 class='Header-h2'>{h2['*']}.</h2>
-  <h2 class='Header-h2-sm'>{h2.sm + ' ' + h2['*']}.</h2>
-  <h2 class='Header-h2-md'>
-    {h2.sm + ' ' + h2['*']}.
-    <span class='Header-h2--light'>{h2.md}.</span>
-  </h2>
-
-  <h2 class='Header-h2-lg'>
-    {h2.sm + ' ' + h2['*']}.
-    <span class='Header-h2--light'>{h2.md}, {h2.lg}.</span>
-  </h2>
+  <Logo {...logo} />
+  <HeaderTitle {h1} {h2} />
 </header>
-
-<style>
-  .Header-h1,
-  .Header-h1-sm,
-  .Header-h1-md,
-  .Header-h1-lg {
-    @apply text-5xl;
-    @apply text-primary;
-  }
-
-  .Header-h2,
-  .Header-h2-sm,
-  .Header-h2-md,
-  .Header-h2-lg {
-    @apply text-4xl;
-    @apply lowercase;
-    @apply text-secondary;
-  }
-
-  .Header-h1,
-  .Header-h1-sm,
-  .Header-h1-md,
-  .Header-h1-lg,
-  .Header-h2,
-  .Header-h2-sm,
-  .Header-h2-md,
-  .Header-h2-lg {
-    @apply ml-16;
-    @apply pl-8;
-    @apply font-bold;
-  }
-
-  .Header-h1,
-  .Header-h2 {
-    @apply block sm:hidden;
-  }
-
-  .Header-h1-sm,
-  .Header-h2-sm {
-    @apply hidden sm:block md:hidden;
-  }
-
-  .Header-h1-md,
-  .Header-h2-md {
-    @apply hidden md:block lg:hidden;
-  }
-
-  .Header-h1-lg,
-  .Header-h2-lg {
-    @apply hidden lg:block;
-  }
-
-  .Header-h2--light {
-    @apply text-gray-300;
-  }
-</style>

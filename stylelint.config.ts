@@ -1,6 +1,4 @@
-/** @type {import('stylelint').Config} */
-// eslint-disable-next-line functional/no-expression-statements, functional/immutable-data
-module.exports = {
+export default {
   extends: [
     '@archoleat/stylelint-config-extended-scss',
     'stylelint-config-sass-guidelines',
