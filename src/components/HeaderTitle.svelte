@@ -12,12 +12,12 @@
   <h2 class="HeaderTitle-h2-sm">{h2.sm + ' ' + h2['*']}.</h2>
   <h2 class="HeaderTitle-h2-md">
     {h2.sm + ' ' + h2['*']}.
-    <span class="HeaderTitle-h2--light">{h2.md}.</span>
+    <span class="HeaderTitle-h2-span">{h2.md}.</span>
   </h2>
 
   <h2 class="HeaderTitle-h2-lg">
     {h2.sm + ' ' + h2['*']}.
-    <span class="HeaderTitle-h2--light">{h2.md}, {h2.lg}.</span>
+    <span class="HeaderTitle-h2-span">{h2.md}, {h2.lg}.</span>
   </h2>
 </div>
 
@@ -76,7 +76,7 @@
     @apply hidden lg:block;
   }
 
-  .HeaderTitle-h2--light {
-    @apply text-gray-300;
+  .HeaderTitle-h2-span {
+    @apply text-red;
   }
 </style>
