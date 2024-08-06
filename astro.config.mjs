@@ -5,15 +5,15 @@ import metadata from 'astro-meta-tags'
 import insights from 'astro-page-insight'
 import betterImage from 'astro-better-image-service'
 import compress from '@playform/compress'
+import { FontaineTransform } from 'fontaine'
 
 /** @type {import('astro').AstroUserConfig} */
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://maisonquiroga.art',
-  compressHTML: true,
   build: {
     inlineStylesheets: 'always'
   },
+  compressHTML: true,
   integrations: [
     svelte(),
     tailwind(),
@@ -24,5 +24,14 @@ export default defineConfig({
       Image: false,
       SVG: false
     })
-  ]
+  ],
+  site: 'https://maisonquiroga.art',
+  vite: {
+    plugins: [
+      FontaineTransform.vite({
+        fallbacks: ['Helvetica'],
+        resolvePath: (id) => new URL(`./public${id}`, import.meta.url)
+      })
+    ]
+  }
 })

@@ -28,9 +28,15 @@ export default {
   ],
   overrides: [
     {
-      files: '*.astro',
+      files: '**/*.astro',
       options: {
         parser: 'astro'
+      }
+    },
+    {
+      files: '**/*.svelte',
+      options: {
+        parser: 'svelte'
       }
     }
   ]

@@ -9,7 +9,11 @@ export default {
         secondary: '#db0019'
       },
       fontFamily: {
-        sans: ['AkzidenzGrotesk', ...defaultTheme.fontFamily.sans]
+        sans: [
+          'AkzidenzGrotesk',
+          'AkzidenzGrotesk override',
+          ...defaultTheme.fontFamily.sans
+        ]
       },
       keyframes: {
         fade: {
