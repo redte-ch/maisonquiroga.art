@@ -39,7 +39,7 @@ export default [
     }
   },
   {
-    files: ['**/*.{js,cjs,mjs,ts,cts,mts}'],
+    files: ['**/*.{js,cjs,mjs,ts}'],
     languageOptions: {
       parser,
       parserOptions: {

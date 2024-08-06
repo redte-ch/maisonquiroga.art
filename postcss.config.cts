@@ -1,7 +1,10 @@
-const tailwindcss = require('tailwindcss')
-const autoprefixer = require('autoprefixer')
-
 /* eslint-disable functional/no-expression-statements,functional/immutable-data */
 module.exports = {
-  plugins: [tailwindcss, autoprefixer]
+  plugins: [
+    require('postcss-import')(),
+    require('tailwindcss')(),
+    require('postcss-url')({ url: 'inline' }),
+    require('autoprefixer')(),
+    require('cssnano')()
+  ]
 }
