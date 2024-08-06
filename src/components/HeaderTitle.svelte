@@ -21,7 +21,7 @@
   </h2>
 </div>
 
-<style>
+<style lang="postcss">
   .HeaderTitle {
     @apply animate-fade;
   }

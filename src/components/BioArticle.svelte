@@ -8,7 +8,7 @@
   <p class="BioArticle-p">{text}</p>
 </article>
 
-<style>
+<style lang="postcss">
   .BioArticle {
     @apply animate-fade;
     @apply block sm:inline-block;

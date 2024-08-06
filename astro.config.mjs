@@ -11,6 +11,9 @@ import compress from '@playform/compress'
 export default defineConfig({
   site: 'https://maisonquiroga.art',
   compressHTML: true,
+  build: {
+    inlineStylesheets: 'always'
+  },
   integrations: [
     svelte(),
     tailwind(),

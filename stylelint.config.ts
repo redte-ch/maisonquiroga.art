@@ -15,7 +15,7 @@ export default {
     'suitcss/selector-root-no-composition': true,
     'plugin/selector-bem-pattern': {
       preset: 'suit',
-      implicitComponents: 'src/components/**/*.astro'
+      implicitComponents: 'src/components/**/*.{astro,svelte}'
     }
   }
 }

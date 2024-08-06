@@ -14,7 +14,7 @@
   {/each}
 </section>
 
-<style>
+<style lang="postcss">
   .Curriculum {
     @apply animate-fade;
   }

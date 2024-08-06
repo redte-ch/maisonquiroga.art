@@ -10,7 +10,7 @@
   {/each}
 </nav>
 
-<style>
+<style lang="postcss">
   .Nav {
     @apply animate-fade;
   }

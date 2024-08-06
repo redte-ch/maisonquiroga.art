@@ -15,7 +15,7 @@
   </p>
 </footer>
 
-<style>
+<style lang="postcss">
   .Footer {
     @apply animate-fade;
   }

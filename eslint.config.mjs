@@ -1,16 +1,17 @@
-const tailwindcss = require('eslint-plugin-tailwindcss')
-const functional = require('eslint-plugin-functional/flat')
-const prettier = require('eslint-config-prettier')
-const standard = require('neostandard')({
+import tailwindcss from 'eslint-plugin-tailwindcss'
+import functional from 'eslint-plugin-functional'
+import prettier from 'eslint-config-prettier'
+import neostandard from 'neostandard'
+
+const standard = neostandard({
   ignores: [
-    ...require('neostandard').resolveIgnoresFromGitignore(),
+    ...neostandard.resolveIgnoresFromGitignore(),
     '**/should-be-ignored/**'
   ],
   ts: true
 })
 
-// eslint-disable-next-line functional/no-expression-statements, functional/immutable-data
-module.exports = [
+export default [
   ...tailwindcss.configs['flat/recommended'],
   functional.configs.recommended,
   functional.configs.stylistic,
@@ -19,7 +20,7 @@ module.exports = [
   {
     files: ['**/*.astro'],
     languageOptions: {
-      parser: require('astro-eslint-parser'),
+      parser: await import('astro-eslint-parser'),
       parserOptions: {
         parser: '@typescript-eslint/parser',
         project: './tsconfig.json',
@@ -30,7 +31,7 @@ module.exports = [
   {
     files: ['**/*.svelte'],
     languageOptions: {
-      parser: require('svelte-eslint-parser'),
+      parser: await import('svelte-eslint-parser'),
       parserOptions: {
         parser: '@typescript-eslint/parser',
         project: './tsconfig.json',
@@ -41,7 +42,9 @@ module.exports = [
   {
     rules: {
       '@stylistic/comma-dangle': 'off',
+      '@stylistic/jsx-indent': 'off',
       'functional/no-let': 'off',
+      'react/jsx-key': 'off',
       'tailwindcss/no-custom-classname': 'off'
     }
   }
