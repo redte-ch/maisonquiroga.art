@@ -1475,6 +1475,7 @@ __metadata:
     astro-eslint-parser: "npm:^1.0.2"
     astro-meta-tags: "npm:^0.3.0"
     astro-page-insight: "npm:^0.8.5"
+    astro-purgecss: "npm:^4.3.0"
     autoprefixer: "npm:^10.4.20"
     cssnano: "npm:^7.0.4"
     eslint: "npm:^9.8.0"
@@ -1494,6 +1495,7 @@ __metadata:
     prettier-plugin-astro: "npm:^0.14.1"
     prettier-plugin-svelte: "npm:^3.2.6"
     prettier-plugin-tailwindcss: "npm:^0.6.5"
+    purgecss: "npm:^6.0.0"
     stylelint: "npm:^16.8.1"
     stylelint-config-astro: "npm:^1.0.4"
     stylelint-config-cloudfour-suit: "npm:^10.0.0"
@@ -2868,6 +2870,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"astro-purgecss@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "astro-purgecss@npm:4.3.0"
+  peerDependencies:
+    astro: ^4.0.0
+    purgecss: ^6.0.0
+  checksum: 10c0/9ae6bc4939e34da5534d55d1208fd58ee1e6306947e65a79dd74400c36cc3ac456af568280aa1e17eeb99c2a10c470caec8e14708d0418d90d9f720f74810094
+  languageName: node
+  linkType: hard
+
 "astro@npm:*":
   version: 4.12.3
   resolution: "astro@npm:4.12.3"
@@ -3699,6 +3711,13 @@ __metadata:
   version: 11.1.0
   resolution: "commander@npm:11.1.0"
   checksum: 10c0/13cc6ac875e48780250f723fb81c1c1178d35c5decb1abb1b628b3177af08a8554e76b2c0f29de72d69eef7c864d12613272a71fabef8047922bc622ab75a179
+  languageName: node
+  linkType: hard
+
+"commander@npm:^12.0.0":
+  version: 12.1.0
+  resolution: "commander@npm:12.1.0"
+  checksum: 10c0/6e1996680c083b3b897bfc1cfe1c58dfbcd9842fd43e1aaf8a795fbc237f65efcc860a3ef457b318e73f29a4f4a28f6403c3d653d021d960e4632dd45bde54a9
   languageName: node
   linkType: hard
 
@@ -9413,7 +9432,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-selector-parser@npm:^6.0.10, postcss-selector-parser@npm:^6.0.11, postcss-selector-parser@npm:^6.0.8, postcss-selector-parser@npm:^6.1.0, postcss-selector-parser@npm:^6.1.1":
+"postcss-selector-parser@npm:^6.0.10, postcss-selector-parser@npm:^6.0.11, postcss-selector-parser@npm:^6.0.7, postcss-selector-parser@npm:^6.0.8, postcss-selector-parser@npm:^6.1.0, postcss-selector-parser@npm:^6.1.1":
   version: 6.1.1
   resolution: "postcss-selector-parser@npm:6.1.1"
   dependencies:
@@ -9733,6 +9752,20 @@ __metadata:
   bin:
     puppeteer: lib/esm/puppeteer/node/cli.js
   checksum: 10c0/c31ec024dd7722c32a681c3e2ae23751021abb3f4c39fbdd895859327e855ae2b89e5682fcdb789de7412314701d882bd37e8545e45cf0a97cd5df06449987b9
+  languageName: node
+  linkType: hard
+
+"purgecss@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "purgecss@npm:6.0.0"
+  dependencies:
+    commander: "npm:^12.0.0"
+    glob: "npm:^10.3.10"
+    postcss: "npm:^8.4.4"
+    postcss-selector-parser: "npm:^6.0.7"
+  bin:
+    purgecss: bin/purgecss.js
+  checksum: 10c0/24f01c1f46e7908964e0d99d48b3ed701d0b878abe111e8706ba26206bcd3747d7ae8c9c01173e5e79ae2d565c6bfc06dc683bfb999f2d00f204243edf603281
   languageName: node
   linkType: hard
 

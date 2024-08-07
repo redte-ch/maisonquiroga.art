@@ -3,6 +3,7 @@ import svelte from '@astrojs/svelte'
 import tailwind from '@astrojs/tailwind'
 import metadata from 'astro-meta-tags'
 import insights from 'astro-page-insight'
+import purgecss from 'astro-purgecss'
 import assetMinifier from '@playform/compress'
 import imageCompressor from 'astro-better-image-service'
 import assetCompressor from 'astro-compressor'
@@ -20,6 +21,7 @@ export default defineConfig({
     tailwind(),
     metadata(),
     insights(),
+    purgecss(),
     assetMinifier({ Image: false, SVG: false }),
     imageCompressor(),
     assetCompressor()
