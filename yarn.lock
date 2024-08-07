@@ -1471,6 +1471,7 @@ __metadata:
     "@types/postcss-url": "npm:^10"
     astro: "npm:^4.13.1"
     astro-better-image-service: "npm:^2.0.14"
+    astro-compressor: "npm:^0.4.1"
     astro-eslint-parser: "npm:^1.0.2"
     astro-meta-tags: "npm:^0.3.0"
     astro-page-insight: "npm:^0.8.5"
@@ -2798,6 +2799,13 @@ __metadata:
     sharp: "npm:0.33.4"
     svgo: "npm:3.3.2"
   checksum: 10c0/8d71780931c60e4f7677a73ae55fb2de4ac627dc9c93ab420a4338410a76f80a22c3360e34f7348004bd7eeb0e11d716baa1b106b77b2a99b7ea1ed699aa05f3
+  languageName: node
+  linkType: hard
+
+"astro-compressor@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "astro-compressor@npm:0.4.1"
+  checksum: 10c0/3c4e27baa8a9c954c1bee410e93b13e0de31ff46f5e738be3b930a0e484faf55caf3de00d8685dc8642083c68104266ddf6cd152cfe8cfac8ef815ca29953e31
   languageName: node
   linkType: hard
 

@@ -3,8 +3,9 @@ import svelte from '@astrojs/svelte'
 import tailwind from '@astrojs/tailwind'
 import metadata from 'astro-meta-tags'
 import insights from 'astro-page-insight'
-import betterImage from 'astro-better-image-service'
-import compress from '@playform/compress'
+import assetMinifier from '@playform/compress'
+import imageCompressor from 'astro-better-image-service'
+import assetCompressor from 'astro-compressor'
 import { FontaineTransform } from 'fontaine'
 
 /** @type {import('astro').AstroUserConfig} */
@@ -19,11 +20,9 @@ export default defineConfig({
     tailwind(),
     metadata(),
     insights(),
-    betterImage(),
-    compress({
-      Image: false,
-      SVG: false
-    })
+    assetMinifier({ Image: false, SVG: false }),
+    imageCompressor(),
+    assetCompressor()
   ],
   site: 'https://maisonquiroga.art',
   vite: {

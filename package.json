@@ -25,6 +25,7 @@
     "@types/postcss-url": "^10",
     "astro": "^4.13.1",
     "astro-better-image-service": "^2.0.14",
+    "astro-compressor": "^0.4.1",
     "astro-eslint-parser": "^1.0.2",
     "astro-meta-tags": "^0.3.0",
     "astro-page-insight": "^0.8.5",
