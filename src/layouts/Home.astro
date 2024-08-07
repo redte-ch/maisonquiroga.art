@@ -3,22 +3,28 @@ import Head from '@components/Head.astro'
 import Header from '@components/Header.astro'
 import Nav from '@components/Nav.svelte'
 import Footer from '@components/Footer.svelte'
-import imgLogo from '@images/logo.jpg'
+import cover from '@images/logo.jpg'
+
+const title = 'Roberto Quiroga Valdovinos'
+const address = 'Lautaro Rosas 558, Cerro Alegre, Valparaíso'
+const position = '-33.04351;-71.62888'
 
 const head = {
-  title: 'Maison Quiroga',
-  author: 'Roberto Quiroga Valdovinos',
+  cover,
+  title,
+  address,
+  position,
+  keywords: ['Artiste', 'Peintre', 'Valparaíso', 'Chili'],
   description: `
-        Roberto Quiroga Valdovinos. Artiste peintre. Œuvres et contact :
-        @maisonquiroga (Instagram). Exposition permanente : Lautaro Rosas 558
-        Cerro Alegre, Valparaíso, Chili.
+        ${title}. Artiste peintre. Œuvres et contact :
+        @maisonquiroga (Instagram). Exposition : ${address}, Chili.
     `
 }
 
 const header = {
   logo: {
     alt: 'Logo de Maison Quiroga',
-    src: imgLogo
+    src: cover
   }
 }
 
@@ -46,11 +52,7 @@ const footerItems = [
 ---
 
 <html lang='fr'>
-  <Head
-    title={head.title}
-    author={head.author}
-    description={head.description}
-  />
+  <Head {...head} />
 
   <body>
     <main>
