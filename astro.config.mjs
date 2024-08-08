@@ -13,6 +13,7 @@ import { FontaineTransform } from 'fontaine'
 // https://astro.build/config
 export default defineConfig({
   build: {
+    assets: 'public',
     inlineStylesheets: 'always'
   },
   compressHTML: true,
