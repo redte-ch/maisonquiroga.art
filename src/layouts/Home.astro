@@ -3,14 +3,19 @@ import Head from '@components/Head.astro'
 import Header from '@components/Header.astro'
 import Nav from '@components/Nav.svelte'
 import Footer from '@components/Footer.svelte'
-import cover from '@images/logo.jpg'
+import coverImage from '@images/logo.jpg'
 
+const { profileImage } = Astro.props
+const images = { coverImage, profileImage }
+
+const url = 'https://www.instagram.com/maisonquiroga/'
 const title = 'Roberto Quiroga Valdovinos'
 const address = 'Lautaro Rosas 558, Cerro Alegre, Valparaíso'
 const position = '-33.04351;-71.62888'
 
 const head = {
-  cover,
+  url,
+  images,
   title,
   address,
   position,
@@ -24,14 +29,14 @@ const head = {
 const header = {
   logo: {
     alt: 'Logo de Maison Quiroga',
-    src: cover
+    src: coverImage
   }
 }
 
 const navItems = [
   {
     text: 'Œuvres choisies',
-    href: 'https://www.instagram.com/maisonquiroga/'
+    href: url
   },
   {
     text: 'Contact',

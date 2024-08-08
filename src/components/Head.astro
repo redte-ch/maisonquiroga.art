@@ -4,14 +4,25 @@ import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '@root/tailwind.config'
 import '@styles/global.css'
 
-const { cover, title, address, position, keywords, description } = Astro.props
-const image = await getImage({ src: cover, format: 'webp' })
-const imageUrl = new URL(image.src, Astro.site)
+const {
+  url,
+  title,
+  images: { coverImage, profileImage },
+  address,
+  position,
+  keywords,
+  description
+} = Astro.props
+
+const cover = await getImage({ src: coverImage, format: 'webp' })
+const profile = await getImage({ src: profileImage, format: 'webp' })
+const coverUrl = new URL(cover.src, Astro.site)
+const profileUrl = new URL(profile.src, Astro.site)
 const { theme } = resolveConfig(tailwindConfig)
 const { colors } = theme
 
 const page = {
-  title: 'Maison Quiroga',
+  title,
   author: 'redtech',
   copyright: '2024, redtech',
   themeColor: colors.secondary,
@@ -23,13 +34,25 @@ const meta = {
   title,
   keywords: keywords.join(', '),
   description,
-  image: imageUrl,
+  image: profileUrl,
   card: 'summary',
   type: 'website',
   site: '', // Twitter/X username
   place: address,
   region: 'CL',
   position
+}
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    name: title,
+    description,
+    image: [profileUrl, coverUrl],
+    sameAs: [url, Astro.url]
+  }
 }
 ---
 
@@ -72,4 +95,7 @@ const meta = {
   <meta name='geo.placename' content={meta.place} />
   <meta name='geo.region' content={meta.region} />
   <meta name='geo.position' content={meta.position} />
+
+  <!-- JSON-LD -->
+  <script type='application/ld+json' set:html={JSON.stringify(schema)} />
 </head>
