@@ -3,7 +3,6 @@ module.exports = {
   plugins: [
     require('postcss-import')(),
     require('tailwindcss')(),
-    require('postcss-url')({ url: 'inline' }),
     require('autoprefixer')(),
     require('cssnano')()
   ]
