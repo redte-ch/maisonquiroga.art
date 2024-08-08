@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config'
 import svelte from '@astrojs/svelte'
+import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import metadata from 'astro-meta-tags'
 import insights from 'astro-page-insight'
@@ -19,6 +20,13 @@ export default defineConfig({
   compressHTML: true,
   integrations: [
     svelte(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'fr',
+        locales: { fr: 'fr-FR' }
+      },
+      lastmod: new Date()
+    }),
     tailwind(),
     metadata(),
     insights(),

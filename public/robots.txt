@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://maisonquiroga.art/sitemap-index.xml
