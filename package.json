@@ -5,14 +5,21 @@
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "dev": "astro dev",
-    "format": "prettier . --write",
+    "check": "run-p check:astro check:eslint check:prettier check:stylelint",
     "check:astro": "astro check --minimumSeverity=error",
     "check:eslint": "eslint .",
     "check:prettier": "prettier . --check",
     "check:stylelint": "stylelint '**/*.{css,astro,svelte}'",
+    "format": "run-s format:eslint format:prettier format:stylelint",
+    "format:eslint": "yarn check:eslint --fix",
+    "format:prettier": "prettier . --write",
+    "format:stylelint": "yarn check:stylelint --fix",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "prepare": "husky"
+    "prepare": "run-s prepare:pip prepare:fonts prepare:husky",
+    "prepare:pip": "pip install -r requirements.txt",
+    "prepare:fonts": "raku ./scripts/convert-fonts.raku",
+    "prepare:husky": "husky"
   },
   "devDependencies": {
     "@archoleat/stylelint-config-extended-scss": "^1.6.12",
@@ -42,6 +49,7 @@
     "fontaine": "^0.5.0",
     "husky": "^9.1.4",
     "neostandard": "^0.11.2",
+    "npm-run-all2": "^6.2.2",
     "postcss": "^8.4.41",
     "postcss-html": "^1.7.0",
     "postcss-import": "^16.1.0",
