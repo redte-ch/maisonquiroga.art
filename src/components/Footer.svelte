@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { footer } from './Footer'
+  export let footerItems: { text: string; href: string }[]
 </script>
 
 <footer class="Footer">
   <p class="Footer-p">
     <span class="Footer-p-span">;</span>
-    {#each footer as { text, href }}
+    {#each footerItems as { text, href }}
       <a class="Footer-p-a" {href}>
         {text}
       </a>

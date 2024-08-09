@@ -3,19 +3,68 @@ import Head from '@components/Head.astro'
 import Header from '@components/Header.astro'
 import Nav from '@components/Nav.svelte'
 import Footer from '@components/Footer.svelte'
+import coverImage from '@images/logo.jpg'
 
-const { page } = Astro.props
+const { profileImage } = Astro.props
+const images = { coverImage, profileImage }
+
+const url = 'https://www.instagram.com/maisonquiroga/'
+const title = 'Roberto Quiroga Valdovinos'
+const address = 'Lautaro Rosas 558, Cerro Alegre, Valparaíso'
+const position = '-33.04351;-71.62888'
+
+const head = {
+  url,
+  images,
+  title,
+  address,
+  position,
+  keywords: ['Artiste', 'Peintre', 'Valparaíso', 'Chili'],
+  description: `
+        Artiste peintre. Œuvres et contact : @maisonquiroga (Instagram).
+        Exposition : ${address}, Chili.
+    `
+}
+
+const header = {
+  logo: {
+    alt: 'Logo de Maison Quiroga',
+    src: coverImage
+  }
+}
+
+const navItems = [
+  {
+    text: 'Œuvres choisies',
+    href: url
+  },
+  {
+    text: 'Contact',
+    href: 'mailto:roberto@maisonquiroga.art'
+  },
+  {
+    text: 'Adresse',
+    href: 'https://www.openstreetmap.org/way/1304668361'
+  }
+]
+
+const footerItems = [
+  {
+    text: 'redtech',
+    href: 'https://redte.ch'
+  }
+]
 ---
 
 <html lang='fr'>
-  <Head page={{ ...page, url: Astro.url }} />
+  <Head {...head} />
 
   <body>
     <main>
-      <Header />
-      <Nav />
+      <Header {...header} />
+      <Nav {navItems} />
       <slot />
-      <Footer />
+      <Footer {footerItems} />
     </main>
   </body>
 </html>

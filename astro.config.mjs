@@ -1,22 +1,16 @@
 import { defineConfig } from 'astro/config'
-import tailwind from '@astrojs/tailwind'
 import svelte from '@astrojs/svelte'
+import sitemap from '@astrojs/sitemap'
+import tailwind from '@astrojs/tailwind'
 import metadata from 'astro-meta-tags'
 import insights from 'astro-page-insight'
-import sitemap from '@astrojs/sitemap'
 import purgecss from 'astro-purgecss'
 import assetMinifier from '@playform/compress'
 import imageCompressor from 'astro-better-image-service'
 import assetCompressor from 'astro-compressor'
 import { FontaineTransform } from 'fontaine'
 
-import type { AstroIntegration } from 'astro'
-
-export const i18n = {
-  defaultLocale: 'fr',
-  locales: { fr: 'fr-FR' }
-}
-
+/** @type {import('astro').AstroUserConfig} */
 // https://astro.build/config
 export default defineConfig({
   build: {
@@ -25,25 +19,24 @@ export default defineConfig({
   },
   compressHTML: true,
   integrations: [
-    tailwind(),
     svelte(),
-    metadata(),
-    insights(),
     sitemap({
-      i18n,
+      i18n: {
+        defaultLocale: 'fr',
+        locales: { fr: 'fr-FR' }
+      },
       lastmod: new Date()
     }),
+    tailwind(),
+    metadata(),
+    insights(),
     purgecss(),
     assetMinifier({ Image: false, SVG: false }),
-    imageCompressor() as AstroIntegration,
+    imageCompressor(),
     assetCompressor()
   ],
   site: 'https://maisonquiroga.art',
   vite: {
-    logLevel: 'error',
-    optimizeDeps: {
-      exclude: ['@playform/compress', 'fsevents', 'lightningcss', 'vitefu']
-    },
     plugins: [
       FontaineTransform.vite({
         fallbacks: ['Helvetica'],

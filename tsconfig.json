@@ -18,8 +18,8 @@
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/pages/*"],
-      "@/*": ["src/*"],
-      "#/*": ["*"]
+      "@src/*": ["src/*"],
+      "@root/*": ["*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,

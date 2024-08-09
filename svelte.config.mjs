@@ -1,7 +1,7 @@
 import { vitePreprocess } from '@astrojs/svelte'
 
 /** @type {boolean} */
-const isProd = !process.env.NODE_ENV || process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production'
 
 /** @type {string} */
 const prefix = 'component'

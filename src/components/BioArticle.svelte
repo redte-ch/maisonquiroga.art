@@ -1,10 +1,11 @@
 <script lang="ts">
-  import { bioArticle } from './BioArticle'
+  export let title: string
+  export let text: string
 </script>
 
 <article class="BioArticle">
-  <h1 class="BioArticle-h1">{bioArticle.title}</h1>
-  <p class="BioArticle-p">{bioArticle.text}</p>
+  <h1 class="BioArticle-h1">{title}</h1>
+  <p class="BioArticle-p">{text}</p>
 </article>
 
 <style lang="postcss">

@@ -1,9 +1,23 @@
 ---
 import Logo from '@components/Logo.astro'
 import HeaderTitle from '@components/HeaderTitle.svelte'
+
+const { logo } = Astro.props
+const h1 = {
+  '*': 'RQV',
+  sm: 'Roberto',
+  md: 'Quiroga',
+  lg: 'Valdovinos'
+}
+const h2 = {
+  '*': 'Peintre',
+  sm: 'Artiste',
+  md: 'Valparaíso',
+  lg: 'Chili'
+}
 ---
 
 <header class='Header'>
-  <Logo />
-  <HeaderTitle />
+  <Logo {...logo} />
+  <HeaderTitle {h1} {h2} />
 </header>

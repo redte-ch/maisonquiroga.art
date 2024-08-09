@@ -2,7 +2,6 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default {
   content: ['./src/**/*.{astro,svelte}'],
-  darkMode: 'false',
   theme: {
     extend: {
       colors: {

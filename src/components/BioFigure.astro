@@ -1,20 +1,32 @@
 ---
+import tailwindConfig from '@root/tailwind.config'
+import resolveConfig from 'tailwindcss/resolveConfig'
 import { Image } from 'astro:assets'
-import { bioFigure } from './BioFigure'
+
+const { theme } = resolveConfig(tailwindConfig)
+const { screens } = theme
+const widths = [320, 256, 160, 128]
+const sizes = `
+  ${widths[0]}px,
+  (min-width: ${screens.sm}) ${widths[1]}px,
+  (min-width: ${screens.md}) ${widths[2]}px,
+  (min-width: ${screens.lg}) ${widths[3]}px
+`
+const { src, alt, caption } = Astro.props
 ---
 
 <figure class='BioFigure'>
   <Image
     class='BioFigure-img'
-    src={bioFigure.image.src}
-    alt={bioFigure.image.alt}
-    width={bioFigure.image.width}
-    height={bioFigure.image.height}
-    sizes={bioFigure.image.sizes}
-    widths={bioFigure.image.widths}
+    src={src}
+    alt={alt}
+    width={widths[0]}
+    height={widths[0]}
+    sizes={sizes}
+    widths={widths}
     loading='eager'
   />
-  <figcaption class='Bio-figure-figcaption'>{bioFigure.caption}</figcaption>
+  <figcaption class='Bio-figure-figcaption'>{caption}</figcaption>
 </figure>
 
 <style>
