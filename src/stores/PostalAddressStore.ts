@@ -1,9 +1,10 @@
-import { get, readable } from 'svelte/store'
-import { france, chili } from '@stores/CountryStore'
-import { paris, valparaiso } from '@stores/CityStore'
-
 import type { Readable } from 'svelte/store'
 import type { PostalAddress } from '~/schemas'
+
+import { get, readable } from 'svelte/store'
+
+import { paris, valparaiso } from '~/stores/CityStore'
+import { chili, france } from '~/stores/CountryStore'
 
 export const adresseRedtech: Readable<PostalAddress> = readable({
   '@context': 'https://schema.org',

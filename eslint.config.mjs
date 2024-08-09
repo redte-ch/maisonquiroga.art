@@ -1,9 +1,9 @@
-import neostandard from 'neostandard'
-import tailwind from 'eslint-plugin-tailwindcss'
 import prettier from 'eslint-config-prettier'
-import functional from 'eslint-plugin-functional'
 import astro from 'eslint-plugin-astro'
+import functional from 'eslint-plugin-functional'
 import svelte from 'eslint-plugin-svelte'
+import tailwind from 'eslint-plugin-tailwindcss'
+import neostandard from 'neostandard'
 import { parser } from 'typescript-eslint'
 
 const standard = neostandard({

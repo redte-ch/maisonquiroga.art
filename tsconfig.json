@@ -12,13 +12,7 @@
     "module": "nodenext",
     "noEmit": true,
     "paths": {
-      "@fonts/*": ["src/assets/fonts/*"],
-      "@images/*": ["src/assets/images/*"],
-      "@styles/*": ["src/assets/styles/*"],
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@pages/*": ["src/pages/*"],
-      "@stores/*": ["src/stores/*"],
+      "!/*": ["src/assets/*"],
       "~/*": ["src/*"],
       "#/*": ["*"]
     },

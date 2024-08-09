@@ -7,6 +7,24 @@ export default {
   embeddedLanguageFormatting: 'auto',
   endOfLine: 'lf',
   htmlWhitespaceSensitivity: 'css',
+  importOrder: [
+    '<TYPES>',
+    '<TYPES>^(#)',
+    '<TYPES>^(~)',
+    '<TYPES>^[.]',
+    '',
+    '<BUILTIN_MODULES>',
+    '',
+    '<THIRD_PARTY_MODULES>',
+    '',
+    '^#/(.*)$',
+    '',
+    '^~/(.*)$',
+    '',
+    '^!/(.*)$',
+    '',
+    '^[./]'
+  ],
   insertPragma: false,
   jsxSingleQuote: true,
   printWidth: 80,
@@ -24,7 +42,8 @@ export default {
   plugins: [
     'prettier-plugin-astro',
     'prettier-plugin-svelte',
-    'prettier-plugin-tailwindcss'
+    'prettier-plugin-tailwindcss',
+    '@ianvs/prettier-plugin-sort-imports'
   ],
   overrides: [
     {

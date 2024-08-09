@@ -1,11 +1,13 @@
 ---
 import { get } from 'svelte/store'
-import Head from '@components/Head.astro'
-import Header from '@components/Header.astro'
-import Nav from '@components/Nav.svelte'
-import Footer from '@components/Footer.svelte'
-import { adresseMaisonQuiroga } from '@stores/PostalAddressStore'
-import coverImage from '@images/logo.jpg'
+
+import Footer from '~/components/Footer.svelte'
+import Head from '~/components/Head.astro'
+import Header from '~/components/Header.astro'
+import Nav from '~/components/Nav.svelte'
+import { adresseMaisonQuiroga } from '~/stores/PostalAddressStore'
+
+import coverImage from '!/images/logo.jpg'
 
 const { profileImage } = Astro.props
 const images = { coverImage, profileImage }

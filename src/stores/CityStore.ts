@@ -1,8 +1,9 @@
-import { get, readable } from 'svelte/store'
-import { france, chili } from '@stores/CountryStore'
-
 import type { Readable } from 'svelte/store'
 import type { City } from '~/schemas'
+
+import { get, readable } from 'svelte/store'
+
+import { chili, france } from '~/stores/CountryStore'
 
 export const paris: Readable<City> = readable({
   '@context': 'https://schema.org',
