@@ -1,4 +1,4 @@
-/** @type {import("prettier").Config} */
+/** @type {import('prettier').Config} */
 export default {
   // StandardJS
   arrowParens: 'always',
@@ -42,6 +42,8 @@ export default {
   plugins: [
     '@ianvs/prettier-plugin-sort-imports',
     'prettier-plugin-astro',
+    'prettier-plugin-jsdoc',
+    'prettier-plugin-pkg',
     'prettier-plugin-sh',
     'prettier-plugin-svelte',
     'prettier-plugin-tailwindcss'

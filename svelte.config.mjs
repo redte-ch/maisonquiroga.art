@@ -8,7 +8,8 @@ const prefix = 'component'
 
 /**
  * Generate a hash.
- * @param {{ hash: (name: string) => string, name: string }} params
+ *
+ * @param {{ hash: (name: string) => string; name: string }} params
  * @returns {string}
  */
 const cssHash = ({ hash, name }) => `${prefix}-${hash(name)}`

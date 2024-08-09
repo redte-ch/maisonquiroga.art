@@ -1,25 +1,30 @@
 {
   "name": "@redtech/maisonquiroga",
   "version": "0.1.0",
-  "private": true,
   "license": "AGPL-3.0-or-later",
+  "private": true,
+  "packageManager": "yarn@4.3.1",
+  "engines": {
+    "node": ">= 20.0.0",
+    "npm": ">= 10.0.0"
+  },
   "scripts": {
-    "dev": "astro dev",
+    "build": "astro check && astro build",
     "check": "run-p check:astro check:eslint check:prettier check:stylelint",
     "check:astro": "astro check --minimumSeverity=error",
     "check:eslint": "eslint .",
     "check:prettier": "prettier . --check",
     "check:stylelint": "stylelint '**/*.{css,astro,svelte}'",
+    "dev": "astro dev",
     "format": "run-s format:eslint format:prettier format:stylelint",
     "format:eslint": "yarn check:eslint --fix",
     "format:prettier": "prettier . --write",
     "format:stylelint": "yarn check:stylelint --fix",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
     "prepare": "run-s prepare:pip prepare:fonts prepare:husky",
-    "prepare:pip": "pip install -r requirements.txt",
     "prepare:fonts": "raku ./scripts/convert-fonts.raku",
-    "prepare:husky": "husky"
+    "prepare:husky": "husky",
+    "prepare:pip": "pip install -r requirements.txt",
+    "preview": "astro preview"
   },
   "devDependencies": {
     "@archoleat/stylelint-config-extended-scss": "^1.6.12",
@@ -56,6 +61,8 @@
     "postcss-import": "^16.1.0",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-jsdoc": "^1.3.0",
+    "prettier-plugin-pkg": "^0.18.1",
     "prettier-plugin-sh": "^0.14.0",
     "prettier-plugin-svelte": "^3.2.6",
     "prettier-plugin-tailwindcss": "^0.6.5",
@@ -72,10 +79,5 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.0.1"
-  },
-  "engines": {
-    "node": ">= 20.0.0",
-    "npm": ">= 10.0.0"
-  },
-  "packageManager": "yarn@4.3.1"
+  }
 }
