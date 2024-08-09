@@ -56,6 +56,7 @@
     "postcss-import": "^16.1.0",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-sh": "^0.14.0",
     "prettier-plugin-svelte": "^3.2.6",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "purgecss": "^6.0.0",

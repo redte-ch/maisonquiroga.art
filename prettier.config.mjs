@@ -40,10 +40,11 @@ export default {
   vueIndentScriptAndStyle: false,
   // Astro
   plugins: [
+    '@ianvs/prettier-plugin-sort-imports',
     'prettier-plugin-astro',
+    'prettier-plugin-sh',
     'prettier-plugin-svelte',
-    'prettier-plugin-tailwindcss',
-    '@ianvs/prettier-plugin-sort-imports'
+    'prettier-plugin-tailwindcss'
   ],
   overrides: [
     {
