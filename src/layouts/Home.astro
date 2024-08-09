@@ -1,8 +1,10 @@
 ---
+import { get } from 'svelte/store'
 import Head from '@components/Head.astro'
 import Header from '@components/Header.astro'
 import Nav from '@components/Nav.svelte'
 import Footer from '@components/Footer.svelte'
+import { adresseMaisonQuiroga } from '@stores/PostalAddressStore'
 import coverImage from '@images/logo.jpg'
 
 const { profileImage } = Astro.props
@@ -10,14 +12,18 @@ const images = { coverImage, profileImage }
 
 const url = 'https://www.instagram.com/maisonquiroga/'
 const title = 'Roberto Quiroga Valdovinos'
-const address = 'Lautaro Rosas 558, Cerro Alegre, Valparaíso'
+const {
+  streetAddress,
+  addressLocality,
+  url: addressUrl
+} = get(adresseMaisonQuiroga)
+const address = `${streetAddress}, ${addressLocality}`
 const position = '-33.04351;-71.62888'
 
 const head = {
   url,
   images,
   title,
-  address,
   position,
   keywords: ['Artiste', 'Peintre', 'Valparaíso', 'Chili'],
   description: `
@@ -44,7 +50,7 @@ const navItems = [
   },
   {
     text: 'Adresse',
-    href: 'https://www.openstreetmap.org/way/1304668361'
+    href: addressUrl.href
   }
 ]
 

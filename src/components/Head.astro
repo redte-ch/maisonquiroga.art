@@ -1,14 +1,18 @@
 ---
 import { getImage } from 'astro:assets'
+import { get } from 'svelte/store'
 import resolveConfig from 'tailwindcss/resolveConfig'
-import tailwindConfig from '@root/tailwind.config'
+import { adresseMaisonQuiroga } from '@stores/PostalAddressStore'
 import '@styles/global.css'
+import tailwindConfig from '#/tailwind.config'
+
+const { streetAddress, addressLocality } = get(adresseMaisonQuiroga)
+const address = `${streetAddress}, ${addressLocality}`
 
 const {
   url,
   title,
   images: { coverImage, profileImage },
-  address,
   position,
   keywords,
   description
