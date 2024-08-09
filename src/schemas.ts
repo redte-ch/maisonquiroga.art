@@ -28,10 +28,10 @@ export interface PostalAddress extends Schema {
 
 export interface GeoCoordinates extends Schema {
   '@type': 'GeoCoordinates'
-  name?: string
+  name: string
   address: PostalAddress
   addressCountry: Country
   latitude: number
   longitude: number
-  url?: URL
+  url: URL
 }

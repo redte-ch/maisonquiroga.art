@@ -1,22 +1,17 @@
 ---
 import { getImage } from 'astro:assets'
-import { get } from 'svelte/store'
 import resolveConfig from 'tailwindcss/resolveConfig'
-
-import { adresseMaisonQuiroga } from '~/stores/PostalAddressStore'
 
 import '!/styles/global.css'
 
 import tailwindConfig from '#/tailwind.config'
 
-const { streetAddress, addressLocality } = get(adresseMaisonQuiroga)
-const address = `${streetAddress}, ${addressLocality}`
+import Geo from '~/components/Meta/Geo.svelte'
 
 const {
   url,
   title,
   images: { coverImage, profileImage },
-  position,
   keywords,
   description
 } = Astro.props
@@ -44,10 +39,7 @@ const meta = {
   image: profileUrl,
   card: 'summary',
   type: 'website',
-  site: '', // Twitter/X username
-  place: address,
-  region: 'CL',
-  position
+  site: '' // Twitter/X username
 }
 
 const schema = {
@@ -100,10 +92,12 @@ const schema = {
   <meta name='twitter:description' content={meta.description} />
 
   <!-- Geo -->
-  <meta name='geo.placename' content={meta.place} />
-  <meta name='geo.region' content={meta.region} />
-  <meta name='geo.position' content={meta.position} />
+  <Geo />
 
   <!-- JSON-LD -->
-  <script type='application/ld+json' set:html={JSON.stringify(schema)} />
+  <script
+    is:inline
+    set:html={JSON.stringify(schema)}
+    type='application/ld+json'
+  />
 </head>
