@@ -1,9 +1,9 @@
 <script lang="ts">
-  export let navItems: { text: string; href: string }[]
+  import { nav } from './Nav'
 </script>
 
 <nav class="Nav">
-  {#each navItems as { text, href }}
+  {#each nav as { text, href }}
     <a class="Nav-a" {href}>
       /{text}
     </a>

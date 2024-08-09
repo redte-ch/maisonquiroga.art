@@ -2,27 +2,7 @@
 import Home from '@layouts/Home.astro'
 import Bio from '@components/Bio.astro'
 import Curriculum from '@components/Curriculum.svelte'
-import imgRoberto from '@images/roberto.jpg'
-
-const bio = {
-  title: 'Biographie de Roberto Quiroga Valdovinos',
-  text: `
-        Né en 1953 à Viña del Mar, Chili, Roberto Quiroga Valdovinos a reçu
-        sa formation d'art à l'Escuela de Bellas Artes de Viña del Mar en
-        1970 et à l'Université de Concepción en 1973. Il a étudié sous la
-        direction de Teresa Vidal, Ismael Pinto, Julio Escamez, Tole
-        Peralta, Albino Echeverría, et Maisner Ordoñez. À la suite du
-        sanglant coup d'État de 1973, il s'est vu contraint de quitter le
-        pays pour emprunter le chemin de l'exil, ce qui a imprimé une
-        marque décisive sur son œuvre. Aujourd'hui, il dirige la Galerie
-        Lugar Inamible et expose ses travaux au Café Zeit.
-    `,
-  figure: {
-    src: imgRoberto,
-    alt: 'Roberto Quiroga Valdovinos',
-    caption: 'Portrait de Roberto Quiroga Valdovinos en 2024 à Valparaíso'
-  }
-}
+import { profilePage } from '@/config'
 
 const cv = [
   {
@@ -118,7 +98,7 @@ const cv = [
 ]
 ---
 
-<Home profileImage={imgRoberto}>
-  <Bio {...bio} />
+<Home page={profilePage}>
+  <Bio />
   {cv.map(({ title, items }) => <Curriculum {title} {items} />)}
 </Home>

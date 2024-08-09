@@ -1,18 +1,15 @@
 ---
 import { Image } from 'astro:assets'
-
-const { src, alt } = Astro.props
-const width = 80
-const height = 80
+import { logo } from './Logo'
 ---
 
 <div class='Logo'>
   <Image
     class='Logo-img'
-    src={src}
-    alt={alt}
-    width={width}
-    height={height}
+    src={logo.src}
+    alt={logo.alt}
+    width={logo.width}
+    height={logo.height}
     loading='eager'
   />
 </div>

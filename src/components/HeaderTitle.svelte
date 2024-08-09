@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let h1: { sm: string; md: string; lg: string; '*': string }
-  export let h2: { sm: string; md: string; lg: string; '*': string }
+  import { headerTitle } from './HeaderTitle'
+  export let { h1, h2 } = headerTitle
 </script>
 
 <div class="HeaderTitle">

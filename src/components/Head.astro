@@ -1,58 +1,53 @@
 ---
-import { getImage } from 'astro:assets'
-import resolveConfig from 'tailwindcss/resolveConfig'
-import tailwindConfig from '@root/tailwind.config'
+import { geoMaisonQuiroga } from '@/config'
+import { head as partialHead } from './Head'
 import '@styles/global.css'
 
+import type { Bing, OpenGraph, ProfilePage, Twitter } from '@/schemas'
+import type { HeadProps } from './Head'
+
+const { address, addressCountry } = geoMaisonQuiroga
+
+const { page } = Astro.props as { page: ProfilePage }
+
 const {
-  url,
-  title,
-  images: { coverImage, profileImage },
-  address,
-  position,
-  keywords,
-  description
-} = Astro.props
-
-const cover = await getImage({ src: coverImage, format: 'webp' })
-const profile = await getImage({ src: profileImage, format: 'webp' })
-const coverUrl = new URL(cover.src, Astro.site)
-const profileUrl = new URL(profile.src, Astro.site)
-const { theme } = resolveConfig(tailwindConfig)
-const { colors } = theme
-
-const page = {
-  title,
-  author: 'redtech',
-  copyright: '2024, redtech',
-  themeColor: colors.secondary,
-  colorScheme: 'only light'
-}
-
-const meta = {
-  url: Astro.url,
-  title,
-  keywords: keywords.join(', '),
-  description,
-  image: profileUrl,
-  card: 'summary',
-  type: 'website',
-  site: '', // Twitter/X username
-  place: address,
-  region: 'CL',
-  position
-}
-
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfilePage',
-  mainEntity: {
-    '@type': 'Person',
-    name: title,
-    description,
-    image: [profileUrl, coverUrl],
-    sameAs: [url, Astro.url]
+  about: {
+    image: [profile]
   }
+} = page
+
+const head: HeadProps = {
+  ...partialHead,
+  author: page.author.name,
+  description: page.abstract,
+  title: page.name
+}
+
+const og: OpenGraph = {
+  image: profile.contentUrl,
+  url: Astro.url,
+  type: 'website',
+  title: page.name,
+  description: page.abstract
+}
+
+const twitter: Twitter = {
+  image: profile.contentUrl,
+  card: 'summary',
+  site: '',
+  title: page.name,
+  description: page.abstract
+}
+
+const bing: Bing = {
+  placename: `
+    ${address.name},
+    ${address.streetAddress},
+    ${address.addressLocality},
+    ${address.addressRegion}.
+  `,
+  region: addressCountry.identifier,
+  position: `${geoMaisonQuiroga.latitude};${geoMaisonQuiroga.longitude}`
 }
 ---
 
@@ -65,38 +60,38 @@ const schema = {
   <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
 
   <!--  Page -->
-  <title>{page.title}</title>
-  <meta name='dc.title' content={page.title} />
-  <meta name='author' content={page.author} />
-  <meta name='copyright' content={page.copyright} />
-  <meta name='theme-color' content={page.themeColor} />
-  <meta name='color-scheme' content={page.colorScheme} />
+  <title>{head.title}</title>
+  <meta name='dc.title' content={head.title} />
+  <meta name='author' content={head.author} />
+  <meta name='copyright' content={head.copyright} />
+  <meta name='theme-color' content={head.themeColor} />
+  <meta name='color-scheme' content={head.colorScheme} />
 
   <!-- Meta -->
-  <link rel='canonical' href={meta.url} />
-  <meta name='title' content={meta.title} />
-  <meta name='keywords' content={meta.keywords} />
-  <meta name='description' content={meta.description} />
+  <link rel='canonical' href={head.canonical} />
+  <meta name='title' content={head.title} />
+  <meta name='keywords' content={head.keywords} />
+  <meta name='description' content={head.description} />
 
   <!-- Open Graph -->
-  <meta property='og:image' content={meta.image} />
-  <meta property='og:url' content={meta.url} />
-  <meta property='og:type' content={meta.type} />
-  <meta property='og:title' content={meta.title} />
-  <meta property='og:description' content={meta.description} />
+  <meta property='og:image' content={og.image} />
+  <meta property='og:url' content={og.url} />
+  <meta property='og:type' content={og.type} />
+  <meta property='og:title' content={og.title} />
+  <meta property='og:description' content={og.description} />
 
   <!-- Twitter -->
-  <meta name='twitter:image' content={meta.image} />
-  <meta name='twitter:card' content={meta.card} />
-  <meta name='twitter:site' content={meta.site} />
-  <meta name='twitter:title' content={meta.title} />
-  <meta name='twitter:description' content={meta.description} />
+  <meta name='twitter:image' content={twitter.image} />
+  <meta name='twitter:card' content={twitter.card} />
+  <meta name='twitter:site' content={twitter.site} />
+  <meta name='twitter:title' content={twitter.title} />
+  <meta name='twitter:description' content={twitter.description} />
 
   <!-- Geo -->
-  <meta name='geo.placename' content={meta.place} />
-  <meta name='geo.region' content={meta.region} />
-  <meta name='geo.position' content={meta.position} />
+  <meta name='geo.placename' content={bing.placename} />
+  <meta name='geo.region' content={bing.region} />
+  <meta name='geo.position' content={bing.position} />
 
   <!-- JSON-LD -->
-  <script type='application/ld+json' set:html={JSON.stringify(schema)} />
+  <script type='application/ld+json' set:html={JSON.stringify(page)} />
 </head>
