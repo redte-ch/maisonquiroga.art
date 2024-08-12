@@ -1,18 +1,16 @@
+import type { Country, WithContext } from 'schema-dts'
 import type { Readable } from 'svelte/store'
-import type { Country } from '~/schemas'
 
 import { readable } from 'svelte/store'
 
-export const france: Readable<Country> = readable({
+export const france: Readable<WithContext<Country>> = readable({
   '@context': 'https://schema.org',
   '@type': 'Country',
-  name: 'France',
-  identifier: 'FR'
+  name: 'France'
 })
 
-export const chili: Readable<Country> = readable({
+export const chili: Readable<WithContext<Country>> = readable({
   '@context': 'https://schema.org',
   '@type': 'Country',
-  name: 'Chili',
-  identifier: 'CL'
+  name: 'Chili'
 })

@@ -6,6 +6,7 @@ import Head from '~/components/Head.astro'
 import Header from '~/components/Header.astro'
 import Nav from '~/components/Nav.svelte'
 import { adresseMaisonQuiroga } from '~/stores/PostalAddressStore'
+import { validateString } from '~/utils/validators'
 
 import coverImage from '!/images/logo.jpg'
 
@@ -50,7 +51,7 @@ const navItems = [
   },
   {
     text: 'Adresse',
-    href: addressUrl.href
+    href: await validateString(addressUrl)
   }
 ]
 

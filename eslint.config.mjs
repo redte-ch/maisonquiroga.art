@@ -46,6 +46,12 @@ export default [
         projectService: true,
         tsconfigRootDir: import.meta.dirname
       }
+    },
+    rules: {
+      'functional/no-throw-statements': [
+        'error',
+        { allowToRejectPromises: true }
+      ]
     }
   },
   {

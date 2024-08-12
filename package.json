@@ -67,6 +67,7 @@
     "prettier-plugin-svelte": "^3.2.6",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "purgecss": "^6.0.0",
+    "schema-dts": "^1.1.2",
     "stylelint": "^16.8.1",
     "stylelint-config-astro": "^1.0.4",
     "stylelint-config-cloudfour-suit": "^10.0.0",

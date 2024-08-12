@@ -1,5 +1,7 @@
 <script lang="ts">
-  export let navItems: { text: string; href: string }[]
+  import type { NavItem } from '~/types'
+
+  export let navItems: NavItem[]
 </script>
 
 <nav class="Nav">

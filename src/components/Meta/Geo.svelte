@@ -1,17 +1,24 @@
 <script lang="ts">
+  import type { MetaGeo } from '~/types'
+
   import { get } from 'svelte/store'
 
   import { geoMaisonQuiroga } from '~/stores/GeoCoordinatesStore'
+  import { adresseMaisonQuiroga } from '~/stores/PostalAddressStore'
+  import { validateString } from '~/utils/validators'
 
-  const { address, addressCountry, latitude, longitude } = get(geoMaisonQuiroga)
-  const { streetAddress, addressLocality } = address
-  const { identifier } = addressCountry
+  const { addressCountry, latitude, longitude } = get(geoMaisonQuiroga)
+  const { streetAddress, addressLocality } = get(adresseMaisonQuiroga)
 
-  export let placename = `${streetAddress}, ${addressLocality}`
-  export let region = identifier
-  export let position = `${latitude};${longitude}`
+  export let metaGeo: MetaGeo = {
+    placename: `${streetAddress}, ${addressLocality}`,
+    position: `${latitude};${longitude}`,
+    region: validateString(addressCountry)
+  }
 </script>
 
-<meta name="geo.placename" content={placename} />
-<meta name="geo.region" content={region} />
-<meta name="geo.position" content={position} />
+<meta name="geo.placename" content={metaGeo.placename} />
+<meta name="geo.position" content={metaGeo.position} />
+{#await metaGeo.region then region}
+  <meta name="geo.region" content={region} />
+{/await}

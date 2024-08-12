@@ -1531,6 +1531,7 @@ __metadata:
     prettier-plugin-svelte: "npm:^3.2.6"
     prettier-plugin-tailwindcss: "npm:^0.6.5"
     purgecss: "npm:^6.0.0"
+    schema-dts: "npm:^1.1.2"
     stylelint: "npm:^16.8.1"
     stylelint-config-astro: "npm:^1.0.4"
     stylelint-config-cloudfour-suit: "npm:^10.0.0"
@@ -10438,6 +10439,15 @@ __metadata:
   version: 1.4.1
   resolution: "sax@npm:1.4.1"
   checksum: 10c0/6bf86318a254c5d898ede6bd3ded15daf68ae08a5495a2739564eb265cd13bcc64a07ab466fb204f67ce472bb534eb8612dac587435515169593f4fffa11de7c
+  languageName: node
+  linkType: hard
+
+"schema-dts@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "schema-dts@npm:1.1.2"
+  peerDependencies:
+    typescript: ">=4.1.0"
+  checksum: 10c0/bcca8719b1bb1cd71ba2b01a5126b3579e917a2f193e10fcffe020fa42fef911776ed9d2197c9f376780e703994b3ab854db3f962c47064f7282f41eff0f1d24
   languageName: node
   linkType: hard
 
