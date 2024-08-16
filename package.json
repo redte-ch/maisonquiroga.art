@@ -11,7 +11,7 @@
   "scripts": {
     "build": "astro check && astro build",
     "check": "run-p check:astro check:eslint check:prettier check:stylelint",
-    "check:astro": "astro check --minimumSeverity=error",
+    "check:astro": "astro check",
     "check:eslint": "eslint .",
     "check:prettier": "prettylint .",
     "check:stylelint": "stylelint '**/*.{css,astro,svelte}'",
