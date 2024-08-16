@@ -1,14 +1,14 @@
-export declare interface MetaGeo {
-  placename: string
-  position: string
-  region: Promise<string>
-}
-
-export declare interface NavItem {
-  text: string
-  href: string
-}
-
-export declare type Guard<T> = (value: unknown) => value is T
-
-export declare type Validator<T> = (value: unknown) => Promise<T>
+export type { Result, Failure, Success } from '~/utils/adt/result'
+export type { Just, Maybe, Nothing } from '~/utils/adt/maybe'
+export type { Curry } from '~/utils/composition/curry'
+export type { Compose } from '~/utils/composition/compose'
+export type { Reduce } from '~/utils/typeclass/foldable'
+export type { Pipe } from '~/utils/composition/pipe'
+export type { Refinement } from '~/utils/refinement/refinement'
+export type { Match } from '~/utils/control-flow/match'
+export type { MetaGeoProps } from '~/components/Meta/MetaGeo.svelte'
+export type { NavProps, NavItemProps } from '~/components/Nav.svelte'
+export type { Country } from '~/stores/CountryStore'
+export type { City } from '~/stores/CityStore'
+export type { PostalAddress } from '~/stores/PostalAddressStore'
+export type { GeoCoordinates } from '~/stores/GeoCoordinatesStore'

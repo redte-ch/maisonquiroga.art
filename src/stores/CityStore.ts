@@ -5,6 +5,8 @@ import { get, readable } from 'svelte/store'
 
 import { chili, france } from '~/stores/CountryStore'
 
+export type { City }
+
 export const paris: Readable<WithContext<City>> = readable({
   '@context': 'https://schema.org',
   '@type': 'City',

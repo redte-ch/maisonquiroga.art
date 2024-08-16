@@ -10,6 +10,14 @@ import purgecss from 'astro-purgecss'
 import { defineConfig } from 'astro/config'
 import { FontaineTransform } from 'fontaine'
 
+/** @type {boolean} */
+const isProd = process.env.NODE_ENV === 'production'
+
+/** @type {string} */
+const site = isProd
+  ? 'https://maisonquiroga.art'
+  : `http://localhost:${process.env.PORT || 4321}`
+
 /** @type {import('astro').AstroUserConfig} */
 // https://astro.build/config
 export default defineConfig({
@@ -35,7 +43,7 @@ export default defineConfig({
     imageCompressor(),
     assetCompressor()
   ],
-  site: 'https://maisonquiroga.art',
+  site,
   vite: {
     plugins: [
       FontaineTransform.vite({

@@ -2,3 +2,4 @@ yarn run check:astro
 yarn run check:eslint
 yarn run check:prettier
 yarn run check:stylelint
+yarn run test

@@ -1,7 +1,13 @@
-import type { PostalAddress, WithContext } from 'schema-dts'
+import type { PostalAddress as TPostalAddress, WithContext } from 'schema-dts'
 import type { Readable } from 'svelte/store'
 
 import { readable } from 'svelte/store'
+
+type PostalAddress = Omit<TPostalAddress, 'url'> & {
+  url: string
+}
+
+export type { PostalAddress }
 
 export const adresseRedtech: Readable<WithContext<PostalAddress>> = readable({
   '@context': 'https://schema.org',

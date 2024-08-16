@@ -1,4 +1,6 @@
 ---
+import type { NavProps } from '~/types'
+
 import { get } from 'svelte/store'
 
 import Footer from '~/components/Footer.svelte'
@@ -6,7 +8,6 @@ import Head from '~/components/Head.astro'
 import Header from '~/components/Header.astro'
 import Nav from '~/components/Nav.svelte'
 import { adresseMaisonQuiroga } from '~/stores/PostalAddressStore'
-import { validateString } from '~/utils/validators'
 
 import coverImage from '!/images/logo.jpg'
 
@@ -40,7 +41,7 @@ const header = {
   }
 }
 
-const navItems = [
+const nav: NavProps = [
   {
     text: 'Œuvres choisies',
     href: url
@@ -51,7 +52,7 @@ const navItems = [
   },
   {
     text: 'Adresse',
-    href: await validateString(addressUrl)
+    href: addressUrl
   }
 ]
 
@@ -69,7 +70,7 @@ const footerItems = [
   <body>
     <main>
       <Header {...header} />
-      <Nav {navItems} />
+      <Nav {nav} />
       <slot />
       <Footer {footerItems} />
     </main>

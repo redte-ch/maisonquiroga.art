@@ -1,11 +1,17 @@
-<script lang="ts">
-  import type { NavItem } from '~/types'
+<script lang="ts" context="module">
+  export type NavItemProps = {
+    text: string
+    href: string
+  }
+  export type NavProps = NavItemProps[]
+</script>
 
-  export let navItems: NavItem[]
+<script lang="ts">
+  export let nav: NavProps
 </script>
 
 <nav class="Nav">
-  {#each navItems as { text, href }}
+  {#each nav as { text, href }}
     <a class="Nav-a" {href}>
       /{text}
     </a>

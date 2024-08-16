@@ -6,7 +6,7 @@ import '!/styles/global.css'
 
 import tailwindConfig from '#/tailwind.config'
 
-import Geo from '~/components/Meta/Geo.svelte'
+import MetaGeo from '~/components/Meta/MetaGeo.svelte'
 
 const {
   url,
@@ -92,7 +92,7 @@ const schema = {
   <meta name='twitter:description' content={meta.description} />
 
   <!-- Geo -->
-  <Geo />
+  <MetaGeo />
 
   <!-- JSON-LD -->
   <script

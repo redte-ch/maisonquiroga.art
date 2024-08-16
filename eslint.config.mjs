@@ -29,13 +29,9 @@ export default [
       '@stylistic/comma-dangle': 'off',
       '@stylistic/jsx-indent': 'off',
       '@typescript-eslint/prefer-readonly': 'off',
-      '@typescript-eslint/switch-exhaustiveness-check': 'off'
-    }
-  },
-  {
-    files: ['**/*.{astro,svelte}'],
-    rules: {
-      'tailwindcss/no-custom-classname': 'off'
+      '@typescript-eslint/switch-exhaustiveness-check': 'off',
+      'functional/no-expression-statements': 'off',
+      'functional/no-return-void': 'off'
     }
   },
   {
@@ -46,8 +42,13 @@ export default [
         projectService: true,
         tsconfigRootDir: import.meta.dirname
       }
-    },
+    }
+  },
+  {
+    files: ['*.{js,cjs,mjs,ts}', 'src/**/*.{js,cjs,mjs,ts}'],
     rules: {
+      'functional/no-expression-statements': 'error',
+      'functional/no-return-void': 'error',
       'functional/no-throw-statements': [
         'error',
         { allowToRejectPromises: true }
@@ -83,6 +84,12 @@ export default [
     },
     rules: {
       'functional/no-let': 'off'
+    }
+  },
+  {
+    files: ['**/*.{astro,svelte}'],
+    rules: {
+      'tailwindcss/no-custom-classname': 'off'
     }
   }
 ]

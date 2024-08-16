@@ -27,6 +27,15 @@ jobs:
       - name: Set yarn
         run: corepack enable
 
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Lint
+        run: yarn run check
+
+      - name: Test
+        run: yarn run test
+
       - name: Install, build, and upload the site
         uses: withastro/action@v2
 

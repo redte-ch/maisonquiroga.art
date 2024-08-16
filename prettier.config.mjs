@@ -47,19 +47,5 @@ export default {
     'prettier-plugin-sh',
     'prettier-plugin-svelte',
     'prettier-plugin-tailwindcss'
-  ],
-  overrides: [
-    {
-      files: '**/*.astro',
-      options: {
-        parser: 'astro'
-      }
-    },
-    {
-      files: '**/*.svelte',
-      options: {
-        parser: 'svelte'
-      }
-    }
   ]
 }
