@@ -1,4 +1,5 @@
 import type { Maybe } from '~/types'
+import type { Matcher } from '~/utils/adt/maybe'
 
 import { describe, expect, expectTypeOf, test } from 'vitest'
 
@@ -80,7 +81,7 @@ describe('isJust/1', () => {
 
 describe('match/2', () => {
   describe('Given a match function', () => {
-    const matchString = match(
+    const matchString: Matcher<unknown, string, string> = match(
       () => '',
       (a) => `${a}`
     )

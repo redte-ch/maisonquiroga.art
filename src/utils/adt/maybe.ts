@@ -7,6 +7,9 @@
 /** To narrow down value types. */
 import type { Refinement } from '~/types'
 
+/** To pattern match values. */
+import { match as pmatch } from '~/utils/control-flow/match'
+
 /** Data type for values that may or may not be present. */
 export type Maybe<A> = Nothing | Just<A>
 
@@ -65,7 +68,7 @@ type OnJust<A, B> = (a: A) => B
 type OnNothing<A> = () => A
 
 /** Matcher over {@link Maybe} */
-type Matcher<A, B, C> = (a: Maybe<A>) => B | C
+export type Matcher<A, B, C> = (a: Maybe<A>) => B | C
 
 /**
  * @param {OnNothing} a - Function to apply when the value is {@link Nothing}.
@@ -80,4 +83,7 @@ export type Match = <A, B, C>(
 
 /** Function to match a {@link Maybe} value and apply the appropriate callbacks. */
 export const match: Match = (onNothing, onJust) => (x) =>
-  isJust(x) ? onJust(x.value) : onNothing()
+  pmatch(x)
+    .with({ _tag: 'Nothing' }, onNothing)
+    .with({ _tag: 'Just' }, ({ value }) => onJust(value))
+    .exhaustive()
