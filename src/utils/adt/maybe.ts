@@ -88,3 +88,23 @@ export const match: Match = (onNothing, onJust) => (x) =>
     .with({ _tag: 'Nothing' }, onNothing)
     .with({ _tag: 'Just' }, ({ value }) => onJust(value))
     .exhaustive()
+
+/**
+ * Maybe functor to wrap/unwrap a function.
+ *
+ * @param {Function} f The mapping function that transforms the input value.
+ * @returns {Function} A new function that takes a `Maybe` container and applies
+ *   the mapping function to its value.
+ */
+export type Map = <A, B>(f: (x: A) => B) => (Fx: Maybe<A>) => Maybe<B>
+
+/**
+ * Maybe functor to wrap/unwrap a function.
+ *
+ * @todo Add support for curried functions.
+ */
+export const map: Map = (f) =>
+  match(
+    () => nothing,
+    (a) => just(f(a))
+  )

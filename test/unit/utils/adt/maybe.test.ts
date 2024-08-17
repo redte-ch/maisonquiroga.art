@@ -3,7 +3,7 @@ import type { Matcher } from '~/utils/adt/maybe'
 
 import { describe, expect, expectTypeOf, test } from 'vitest'
 
-import { isJust, isNothing, just, match, nothing } from '~/utils/adt/maybe'
+import { isJust, isNothing, just, map, match, nothing } from '~/utils/adt/maybe'
 
 describe('Maybe', () => {
   describe('Given a value or the absence thereof', () => {
@@ -95,6 +95,26 @@ describe('match/2', () => {
     test('When matching nothing', () => {
       const result = matchString(nothing)
       expect(result).toBe(1)
+    })
+  })
+})
+
+describe('map/1', () => {
+  describe('Given a function', () => {
+    type Inc<A> = (a: A) => A
+    const inc: Inc<number> = (a) => a + 1
+
+    type MaybeAdd<A> = (a: Maybe<A>) => Maybe<A>
+    const maybeAdd: MaybeAdd<number> = map(inc)
+
+    test('When lifting it with "just"', () => {
+      const result = maybeAdd(just(1))
+      expect(result).toStrictEqual(just(2))
+    })
+
+    test('When lifting it with "nothing"', () => {
+      const result = maybeAdd(nothing)
+      expect(result).toBe(nothing)
     })
   })
 })
