@@ -1,11 +1,10 @@
-import type { City, WithContext } from 'schema-dts'
+import type { WithContext } from 'schema-dts'
 import type { Readable } from 'svelte/store'
+import type { City } from '~/domain/entities'
 
 import { get, readable } from 'svelte/store'
 
 import { chili, france } from '~/stores/CountryStore'
-
-export type { City }
 
 export const paris: Readable<WithContext<City>> = readable({
   '@context': 'https://schema.org',

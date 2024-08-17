@@ -1,17 +1,12 @@
-import type { GeoCoordinates as TGeoCoordinates, WithContext } from 'schema-dts'
+import type { WithContext } from 'schema-dts'
 import type { Readable } from 'svelte/store'
+import type { GeoCoordinates } from '~/domain/entities'
 
 import { get, readable } from 'svelte/store'
 
 import { adresseMaisonQuiroga } from '~/stores/PostalAddressStore'
 
-type GeoCoordinates = Omit<TGeoCoordinates, 'addressCountry'> & {
-  addressCountry: string
-}
-
 const { name, url } = get(adresseMaisonQuiroga)
-
-export type { GeoCoordinates }
 
 export const geoMaisonQuiroga: Readable<WithContext<GeoCoordinates>> = readable(
   {
