@@ -6,97 +6,48 @@ import { describe, expect, test } from 'vitest'
 import { failed, failure, match, succeed, success } from '~/utils/adt/result'
 
 describe('Either', () => {
-  describe('Given a divide function', () => {
-    const error = 'Cannot divide by zero'
-    const divide = (a: number, b: number): Result<string, number> =>
-      b === 0 ? failure(error) : success(a / b)
+  const error = 'Cannot divide by zero'
+  const divide = (a: number, b: number): Result<string, number> =>
+    b === 0 ? failure(error) : success(a / b)
 
-    test('When it divides by zero', () => {
-      const numerator = Math.random()
-      const denominator = 0
-      const result = divide(numerator, denominator)
-      expect(result).toEqual({ _tag: 'Failure', error })
-    })
+  test('When it divides by zero', () => {
+    const result = divide(Math.random(), 0)
+    expect(result).toEqual({ _tag: 'Failure', error })
+  })
 
-    test('When it does not divede by zero', () => {
-      const numerator = Math.random()
-      const denominator = Math.random() + 1
-      const result = divide(numerator, denominator)
-      expect(result).toEqual({
-        _tag: 'Success',
-        value: numerator / denominator
-      })
-    })
+  test('When it does not divide by zero', () => {
+    const numerator = Math.random()
+    const denominator = Math.random() + 1
+    const result = divide(numerator, denominator)
+    expect(result).toEqual({ _tag: 'Success', value: numerator / denominator })
   })
 })
 
 describe('failed/1', () => {
-  describe('Given a value', () => {
-    describe('of type "Failure"', () => {
-      const value: Result<string, number> = {
-        _tag: 'Failure',
-        error: 'error'
-      }
-
-      test('When checked with "failed"', () => {
-        const result = failed(value)
-        expect(result).toBe(true)
-      })
-    })
-
-    describe('of type "Success"', () => {
-      const value: Result<string, number> = { _tag: 'Success', value: 1 }
-
-      test('When checked with "failed"', () => {
-        const result = failed(value)
-        expect(result).toBe(false)
-      })
-    })
+  test('When checked with "failed"', () => {
+    expect(failed({ _tag: 'Failure', error: 'error' })).toBe(true)
+    expect(failed({ _tag: 'Success', value: 1 })).toBe(false)
   })
 })
 
 describe('succeed/1', () => {
-  describe('Given a value', () => {
-    describe('of type "Success"', () => {
-      const value: Result<string, number> = { _tag: 'Success', value: 1 }
-
-      test('When checked with "succeed"', () => {
-        const result = succeed(value)
-        expect(result).toBe(true)
-      })
-    })
-
-    describe('of type "Failure"', () => {
-      const value: Result<string, number> = {
-        _tag: 'Failure',
-        error: 'error'
-      }
-
-      test('When checked with "succeed"', () => {
-        const result = succeed(value)
-        expect(result).toBe(false)
-      })
-    })
+  test('When checked with "succeed"', () => {
+    expect(succeed({ _tag: 'Success', value: 1 })).toBe(true)
+    expect(succeed({ _tag: 'Failure', error: 'error' })).toBe(false)
   })
 })
 
 describe('match/2', () => {
-  describe('Given a match function', () => {
-    const matchNumber: Matcher<string | number> = match(
-      (e) => `${e}`,
-      (a) => `${a}`
-    )
+  const matchNumber: Matcher<string | number> = match(
+    (e) => `${e}`,
+    (a) => `${a}`
+  )
 
-    test('When it fails', () => {
-      const value = 'error'
-      const result = matchNumber(failure(value))
-      expect(result).toBe(value)
-    })
+  test('When it fails', () => {
+    expect(matchNumber(failure('error'))).toBe('error')
+  })
 
-    test('When it suceeds', () => {
-      const value = 1
-      const result = matchNumber(success(value))
-      expect(result).toBe(`${value}`)
-    })
+  test('When it succeeds', () => {
+    expect(matchNumber(success(1))).toBe('1')
   })
 })
