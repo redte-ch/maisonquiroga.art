@@ -22,8 +22,10 @@ export type Compose = {
 /**
  * Compose a function from an array of functions.
  *
- * @param {Fn<A, B>[]} fx - An array of functions to compose.
- * @returns {Fn<A, B>} - The composed function.
+ * @template A - The input type of the first function.
+ * @template B - The output type of the last function.
+ * @param {Fn<any, any>[]} fx - An array of functions to compose.
+ * @returns {Fn<A, A | B>} - The composed function.
  */
 export const compose: Compose = <A, B>(
   fx: ReadonlyArray<Fn<any, any>>

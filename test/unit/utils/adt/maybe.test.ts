@@ -4,6 +4,7 @@ import type { Matcher } from '~/utils/adt/maybe'
 import { describe, expect, expectTypeOf, test } from 'vitest'
 
 import { isJust, isNothing, just, map, match, nothing } from '~/utils/adt/maybe'
+import { compose } from '~/utils/composition/compose'
 
 describe('Maybe', () => {
   describe('Given a value or the absence thereof', () => {
@@ -104,17 +105,72 @@ describe('map/1', () => {
     type Inc<A> = (a: A) => A
     const inc: Inc<number> = (a) => a + 1
 
-    type MaybeAdd<A> = (a: Maybe<A>) => Maybe<A>
-    const maybeAdd: MaybeAdd<number> = map(inc)
+    type MaybeInc<A> = (a: Maybe<A>) => Maybe<A>
+    const maybeInc: MaybeInc<number> = map(inc)
 
     test('When lifting it with "just"', () => {
-      const result = maybeAdd(just(1))
+      const result = maybeInc(just(1))
       expect(result).toStrictEqual(just(2))
     })
 
     test('When lifting it with "nothing"', () => {
-      const result = maybeAdd(nothing)
+      const result = maybeInc(nothing)
       expect(result).toBe(nothing)
+    })
+
+    describe('Given another function', () => {
+      type Length<A> = (a: A) => number
+      const length: Length<string> = (a) => a.length
+
+      type MaybeLength<A> = (a: Maybe<A>) => Maybe<number>
+      const maybeLength: MaybeLength<string> = map(length)
+
+      const composed = compose([inc, length])
+
+      describe('Given the composed lifted functions', () => {
+        const composedMap = compose([maybeInc, maybeLength])
+
+        test('When evaluating with "just"', () => {
+          const result = composedMap(just('7'))
+          expect(result).toStrictEqual(just(2))
+        })
+
+        test('When evaluating with "nothing"', () => {
+          const result = composedMap(nothing)
+          expect(result).toBe(nothing)
+        })
+      })
+
+      describe('Given the lifted composed functions', () => {
+        const mappedCompose = map(composed)
+
+        test('When evaluating with "just"', () => {
+          const result = mappedCompose(just('777'))
+          expect(result).toStrictEqual(just(4))
+        })
+
+        test('When evaluating with "nothing"', () => {
+          const result = mappedCompose(nothing)
+          expect(result).toBe(nothing)
+        })
+      })
+
+      describe('Given both composed-lifted and lifted-composed', () => {
+        const composedMap = compose([maybeInc, maybeLength])
+        const mappedCompose = map(composed)
+
+        test('When evaluating with "just"', () => {
+          const cm = composedMap(just('¡Hola!'))
+          const mc = mappedCompose(just('¡Hola!'))
+          expect(cm).toStrictEqual(mc)
+        })
+
+        test('When evaluating with "nothing"', () => {
+          const cm = composedMap(nothing)
+          const mc = composedMap(nothing)
+          expect(cm).toBe(mc)
+        })
+      })
     })
   })
 })
