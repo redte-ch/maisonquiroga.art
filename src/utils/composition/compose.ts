@@ -4,36 +4,35 @@
  * @module compose
  */
 
-import { curry } from '~/utils/composition/curry'
-import { reduce } from '~/utils/typeclass/foldable'
+/** To pattern match values. */
+import { match } from '~/utils/control-flow/match'
 
-/** @typeParam T */
-type Fn<T> = (a: T) => T
+/** Function type that takes a value of type A and returns a value of type B. */
+type Fn<A, B> = (a: A) => B
 
-/** @template T */
-export type Fx<T> = ReadonlyArray<Fn<T>>
-
-/**
- * @template T
- * @type Compose
- * @param {Fx<T>} a - The list of functions to compose.
- * @returns {Function} The result of composing the functions.
- */
-export type Compose = <T>(a: Fx<T>) => (b: T) => T
+/** Compose type definition. */
+export type Compose = {
+  <A, B, C, D>(a: Readonly<[Fn<A, B>, Fn<B, C>, Fn<C, D>]>): Fn<A, D>
+  <A, B, C>(a: Readonly<[Fn<A, B>, Fn<B, C>]>): Fn<A, C>
+  <A, B>(a: Readonly<[Fn<A, B>]>): Fn<A, B>
+  <A>(a: Readonly<[]>): Fn<A, A>
+  (a: ReadonlyArray<Fn<any, any>>): Fn<any, any>
+}
 
 /**
  * Compose a function from an array of functions.
  *
- * @template T
- * @param {Fx<T>} fx - An array of functions to be composed.
- * @returns {(x: T) => T} A function that takes an input value of type T and
- *   applies each function in the array to the input in order.
- * @todo Do not use curry here, because it hides the type of the function.
- *   Actually, reduce is already curried. But, when using reduce directly, the
- *   types do not match/. That needs to be fixed.
+ * @param {Fn<A, B>[]} fx - An array of functions to compose.
+ * @returns {Fn<A, B>} - The composed function.
  */
-export const compose: Compose = <T>(fx: Fx<T>): ((x: T) => T) => {
-  const fn = (g: T, f: Fn<T>) => f(g)
-  const reducer = curry(reduce)(fn)
-  return (x: T) => reducer(x)(fx)
+export const compose: Compose = <A, B>(
+  fx: ReadonlyArray<Fn<any, any>>
+): Fn<A, A | B> => {
+  return match(fx.length)
+    .with(0, () => (x: A) => x)
+    .with(1, () => fx[0])
+    .otherwise(() => {
+      const [head, ...tail] = fx
+      return (x: A) => compose(tail)(head(x))
+    })
 }

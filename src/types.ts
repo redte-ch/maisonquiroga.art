@@ -1,6 +1,5 @@
 export type { Result, Failure, Success } from '~/utils/adt/result'
 export type { Just, Maybe, Nothing } from '~/utils/adt/maybe'
-export type { Curry } from '~/utils/composition/curry'
 export type { Compose } from '~/utils/composition/compose'
 export type { Reduce } from '~/utils/typeclass/foldable'
 export type { Pipe } from '~/utils/composition/pipe'
