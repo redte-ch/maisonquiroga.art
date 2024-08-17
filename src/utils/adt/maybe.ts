@@ -48,7 +48,7 @@ export const nothing: Maybe<never> = { _tag: 'Nothing' }
  */
 export const isJust: Refinement<Maybe<unknown>, Just<unknown>> = (
   x: Maybe<unknown>
-): x is Just<unknown> => x && x._tag && x._tag === 'Just'
+): x is Just<unknown> => x._tag === 'Just'
 
 /**
  * Check if a value is {@link Nothing}.
@@ -59,29 +59,30 @@ export const isJust: Refinement<Maybe<unknown>, Just<unknown>> = (
  */
 export const isNothing: Refinement<Maybe<unknown>, Nothing> = (
   x: Maybe<unknown>
-): x is Nothing => x && x._tag && x._tag === 'Nothing'
+): x is Nothing => x._tag === 'Nothing'
 
 /** Callback if a value is {@link Just}. */
-type OnJust<A, B> = (a: A) => B
+type OnJust<J, O> = (a: J) => O
 
 /** Callback if a value is {@link Nothing}. */
-type OnNothing<A> = () => A
+type OnNothing<N> = () => N
 
 /** Matcher over {@link Maybe} */
-export type Matcher<A, B, C> = (a: Maybe<A>) => B | C
+export type Matcher<N, J, O = J> = (a: Maybe<J>) => N | O
 
 /**
+ * Match a {@link Maybe} value and apply the appropriate callbacks.
+ *
  * @param {OnNothing} a - Function to apply when the value is {@link Nothing}.
  * @param {OnJust} b - Function to apply when the value is {@link Just}.
- * @returns {Matcher} A function that takes a {@link Maybe} value and returns the
- *   result of applying the appropriate callback function.
+ * @returns {Matcher} The result of performing the match.
  */
-export type Match = <A, B, C>(
-  a: OnNothing<B>,
-  b: OnJust<A, C>
-) => Matcher<A, B, C>
+export type Match = <N, J, O>(
+  a: OnNothing<N>,
+  b: OnJust<J, O>
+) => Matcher<N, J, O>
 
-/** Function to match a {@link Maybe} value and apply the appropriate callbacks. */
+/** Match a {@link Maybe} value and apply the appropriate callbacks. */
 export const match: Match = (onNothing, onJust) => (x) =>
   pmatch(x)
     .with({ _tag: 'Nothing' }, onNothing)

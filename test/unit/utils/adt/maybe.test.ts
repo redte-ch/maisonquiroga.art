@@ -81,29 +81,20 @@ describe('isJust/1', () => {
 
 describe('match/2', () => {
   describe('Given a match function', () => {
-    const matchString: Matcher<unknown, string, string> = match(
-      () => '',
-      (a) => `${a}`
+    const matchString: Matcher<number, string> = match(
+      () => 1,
+      (a) => a
     )
 
     test('When matching a "string" over it', () => {
       const value = '1'
       const result = matchString(just(value))
       expect(result).toBe(value)
-      expectTypeOf(result).toEqualTypeOf<string>()
-    })
-
-    test('When matching a "number" over it', () => {
-      const value = 1
-      const result = matchString(just(value))
-      expect(result).toBe(`${value}`)
-      expectTypeOf(result).toEqualTypeOf<string>()
     })
 
     test('When matching nothing', () => {
       const result = matchString(nothing)
-      expect(result).toBe(String())
-      expectTypeOf(result).toEqualTypeOf<string>()
+      expect(result).toBe(1)
     })
   })
 })

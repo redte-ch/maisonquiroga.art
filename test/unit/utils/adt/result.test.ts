@@ -1,4 +1,5 @@
 import type { Result } from '~/types'
+import type { Matcher } from '~/utils/adt/result'
 
 import { describe, expect, test } from 'vitest'
 
@@ -81,9 +82,9 @@ describe('succeed/1', () => {
 
 describe('match/2', () => {
   describe('Given a match function', () => {
-    const matchNumber = match(
-      (e) => e,
-      (a) => a
+    const matchNumber: Matcher<string | number> = match(
+      (e) => `${e}`,
+      (a) => `${a}`
     )
 
     test('When it fails', () => {
@@ -95,7 +96,7 @@ describe('match/2', () => {
     test('When it suceeds', () => {
       const value = 1
       const result = matchNumber(success(value))
-      expect(result).toBe(value)
+      expect(result).toBe(`${value}`)
     })
   })
 })
