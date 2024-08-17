@@ -56,6 +56,12 @@ export default [
     }
   },
   {
+    files: ['**/*.ts'],
+    rules: {
+      '@stylistic/indent': 'off'
+    }
+  },
+  {
     files: ['**/*.astro'],
     languageOptions: {
       parser: await import('astro-eslint-parser'),

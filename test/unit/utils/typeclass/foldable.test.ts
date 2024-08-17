@@ -4,16 +4,17 @@ import { reduce } from '~/utils/typeclass/foldable'
 
 describe('reduce/3', () => {
   describe('Given a function/2', () => {
-    const init = -1
     const fn = (acc: number, current: number) => acc + current
+    const init = -1
+    const reducer = reduce(fn)(init)
 
     test('When reducing an array', () => {
-      const result = reduce(fn, init, [2, 3, 4])
+      const result = reducer([2, 3, 4])
       expect(result).toBe(8)
     })
 
     test('When reducing an empty array', () => {
-      const result = reduce(fn, init, [])
+      const result = reducer([])
       expect(result).toBe(init)
     })
   })
