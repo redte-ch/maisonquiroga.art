@@ -28,6 +28,9 @@ export type Compose = <T>(a: Fx<T>) => (b: T) => T
  * @param {Fx<T>} fx - An array of functions to be composed.
  * @returns {(x: T) => T} A function that takes an input value of type T and
  *   applies each function in the array to the input in order.
+ * @todo Do not use curry here, because it hides the type of the function.
+ *   Actually, reduce is already curried. But, when using reduce directly, the
+ *   types do not match/. That needs to be fixed.
  */
 export const compose: Compose = <T>(fx: Fx<T>): ((x: T) => T) => {
   const fn = (g: T, f: Fn<T>) => f(g)

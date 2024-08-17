@@ -18,4 +18,4 @@ import { compose } from '~/utils/composition/compose'
 export type Pipe = <T>(a: Fx<T>) => (a: T) => T
 
 /** Pipe a value through an array of functions. */
-export const pipe: Pipe = (fx) => compose(fx)
+export const pipe: Pipe = compose
