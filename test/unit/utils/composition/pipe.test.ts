@@ -12,12 +12,12 @@ describe('pipe/2', () => {
     const value = 2
 
     test('When piped with n functions', () => {
-      const result = pipe(value, [inc, dec, square])
+      const result = pipe([inc, dec, square])(value)
       expect(result).toBe(4)
     })
 
     test('When piped with no function', () => {
-      const result = pipe(value, [])
+      const result = pipe([])(value)
       expect(result).toBe(value)
     })
   })
