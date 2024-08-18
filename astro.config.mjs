@@ -1,13 +1,14 @@
 import sitemap from '@astrojs/sitemap'
 import svelte from '@astrojs/svelte'
 import tailwind from '@astrojs/tailwind'
+import { defineConfig } from 'astro/config'
+
 import assetMinifier from '@playform/compress'
 import imageCompressor from 'astro-better-image-service'
 import assetCompressor from 'astro-compressor'
 import metadata from 'astro-meta-tags'
 import insights from 'astro-page-insight'
 import purgecss from 'astro-purgecss'
-import { defineConfig } from 'astro/config'
 import { FontaineTransform } from 'fontaine'
 
 /** @type {boolean} */
@@ -28,10 +29,11 @@ const assetMinifierConfig = {
   SVG: false
 }
 
+/** @type {number} */
+const port = 4321
+
 /** @type {string} */
-const site = isProd
-  ? 'https://maisonquiroga.art'
-  : `http://localhost:${process.env.PORT || 4321}`
+const site = isProd ? 'https://maisonquiroga.art' : `http://localhost:${port}`
 
 /** @type {object} */
 const vite = {
@@ -55,6 +57,7 @@ export default defineConfig({
     svelte(),
     sitemap(sitemapConfig),
     tailwind(),
+    /* @ts-ignore */
     metadata(),
     insights(),
     purgecss(),
@@ -62,6 +65,11 @@ export default defineConfig({
     imageCompressor(),
     assetCompressor()
   ],
+  output: 'static',
+  server: {
+    port
+  },
   site,
+  trailingSlash: 'always',
   vite
 })

@@ -1,0 +1,11 @@
+---
+import BioArticle from './BioArticle.svelte'
+import BioFigure from './BioFigure.astro'
+
+const { title, text, figure } = Astro.props
+---
+
+<section class='Bio'>
+  <BioArticle {title} {text} />
+  <BioFigure {...figure} />
+</section>

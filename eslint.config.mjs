@@ -97,5 +97,8 @@ export default [
     rules: {
       'tailwindcss/no-custom-classname': 'off'
     }
+  },
+  {
+    ignores: ['.astro/types.d.ts']
   }
 ]

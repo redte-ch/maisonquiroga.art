@@ -12,9 +12,15 @@
     "module": "nodenext",
     "noEmit": true,
     "paths": {
-      "!/*": ["src/assets/*"],
-      "~/*": ["src/*"],
-      "#/*": ["*"]
+      ";/*": ["src/ui/assets/*"],
+      "#/*": ["*"],
+      "$/*": ["src/app/*"],
+      "%/*": ["src/content/*"],
+      "&/*": ["src/domain/*"],
+      "+/*": ["src/infra/*"],
+      "@/*": ["src/pages/*"],
+      "^/*": ["src/ui/*"],
+      "~/*": ["src/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,
