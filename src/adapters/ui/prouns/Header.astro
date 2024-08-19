@@ -1,0 +1,23 @@
+---
+import Logo from ';/atoms/Logo.astro'
+import HeaderTitle from ';/blocks/HeaderTitle.svelte'
+
+const { logo } = Astro.props
+const h1 = {
+  '*': 'RQV',
+  sm: 'Roberto',
+  md: 'Quiroga',
+  lg: 'Valdovinos'
+}
+const h2 = {
+  '*': 'Peintre',
+  sm: 'Artiste',
+  md: 'Valparaíso',
+  lg: 'Chili'
+}
+---
+
+<header class='Header'>
+  <Logo {...logo} />
+  <HeaderTitle {h1} {h2} />
+</header>

@@ -1,0 +1,79 @@
+---
+import type { NavProps } from '$/types'
+
+import { get } from 'svelte/store'
+
+import { adresseMaisonQuiroga } from '+/PostalAddressStore'
+
+import Nav from ';/blocks/Nav.svelte'
+import Footer from ';/prouns/Footer.svelte'
+import Head from ';/prouns/Head.astro'
+import Header from ';/prouns/Header.astro'
+
+import coverImage from ';/assets/images/logo.jpg'
+
+const { profileImage } = Astro.props
+const images = { coverImage, profileImage }
+
+const url = 'https://www.instagram.com/maisonquiroga/'
+const title = 'Roberto Quiroga Valdovinos'
+const {
+  streetAddress,
+  addressLocality,
+  url: addressUrl
+} = get(adresseMaisonQuiroga)
+const address = `${streetAddress}, ${addressLocality}`
+
+const head = {
+  url,
+  images,
+  title,
+  keywords: ['Artiste', 'Peintre', 'Valparaíso', 'Chili'],
+  description: `
+        Artiste peintre. Œuvres et contact : @maisonquiroga (Instagram).
+        Exposition : ${address}, Chili.
+    `
+}
+
+const header = {
+  logo: {
+    alt: 'Logo de Maison Quiroga',
+    src: coverImage
+  }
+}
+
+const nav: NavProps = [
+  {
+    text: 'Œuvres choisies',
+    href: url
+  },
+  {
+    text: 'Contact',
+    href: 'mailto:roberto@maisonquiroga.art'
+  },
+  {
+    text: 'Adresse',
+    href: addressUrl
+  }
+]
+
+const footerItems = [
+  {
+    text: 'redtech',
+    href: 'https://redte.ch'
+  }
+]
+---
+
+<html lang='fr'>
+  <Head {...head} />
+
+  <body>
+    <main>
+      <Header {...header} />
+      <Nav {nav} />
+      <slot />
+      <Footer {footerItems} />
+    </main>
+  </body>
+</html>

@@ -6,6 +6,8 @@ import tailwind from 'eslint-plugin-tailwindcss'
 import neostandard from 'neostandard'
 import { parser } from 'typescript-eslint'
 
+import restrictedImports from './src/config/imports-policy.mjs'
+
 const standard = neostandard({
   ignores: [
     ...neostandard.resolveIgnoresFromGitignore(),
@@ -24,6 +26,7 @@ export default [
   ...astro.configs.recommended,
   ...svelte.configs['flat/recommended'],
   ...svelte.configs['flat/prettier'],
+  ...restrictedImports,
   {
     rules: {
       '@stylistic/comma-dangle': 'off',

@@ -2,19 +2,22 @@ import sitemap from '@astrojs/sitemap'
 import svelte from '@astrojs/svelte'
 import tailwind from '@astrojs/tailwind'
 import { defineConfig } from 'astro/config'
-
-import assetMinifier from '@playform/compress'
 import imageCompressor from 'astro-better-image-service'
 import assetCompressor from 'astro-compressor'
 import metadata from 'astro-meta-tags'
 import insights from 'astro-page-insight'
 import purgecss from 'astro-purgecss'
+
+import assetMinifier from '@playform/compress'
 import { FontaineTransform } from 'fontaine'
 
 /** @type {boolean} */
 const isProd = process.env.NODE_ENV === 'production'
 
-/** @type {object} */
+/**
+ * @type {object}
+ * @todo Move this to a config file.
+ */
 const sitemapConfig = {
   i18n: {
     defaultLocale: 'fr',
@@ -32,10 +35,16 @@ const assetMinifierConfig = {
 /** @type {number} */
 const port = 4321
 
-/** @type {string} */
+/**
+ * @type {string}
+ * @todo Move this to a config file (at least the production URL).
+ */
 const site = isProd ? 'https://maisonquiroga.art' : `http://localhost:${port}`
 
-/** @type {object} */
+/**
+ * @type {object}
+ * @todo Move this to a config file.
+ */
 const vite = {
   plugins: [
     FontaineTransform.vite({

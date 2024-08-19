@@ -1,4 +1,7 @@
 /** @type {import('prettier').Config} */
+import sortedImports from './src/config/imports-order.mjs'
+
+/** @type {import('prettier').Config} */
 export default {
   // StandardJS
   arrowParens: 'always',
@@ -7,61 +10,6 @@ export default {
   embeddedLanguageFormatting: 'auto',
   endOfLine: 'lf',
   htmlWhitespaceSensitivity: 'css',
-  importOrder: [
-    '<TYPES>',
-    '<TYPES>^(@astrojs/)',
-    '<TYPES>^(astro/)',
-    '<TYPES>^(astro:)',
-    '<TYPES>^(svelte)',
-    '<TYPES>^(@\\w)',
-    '<TYPES>^(\\w)',
-    '<TYPES>^([#])',
-    '<TYPES>^([~])',
-    '<TYPES>^([&])',
-    '<TYPES>^([$])',
-    '<TYPES>^([+])',
-    '<TYPES>^([^])',
-    '<TYPES>^([@])',
-    '<TYPES>^([%])',
-    '<TYPES>^([;])',
-    '<TYPES>^([./])',
-    '<TYPES>^([../])',
-    '',
-    '<BUILTIN_MODULES>',
-    '',
-    '<THIRD_PARTY_MODULES>',
-    '',
-    '^(@astrojs/)(.*)$',
-    '^(astro/)(.*)$',
-    '^(astro:)(.*)$',
-    '',
-    '^(svelte)(.*)$',
-    '',
-    '^(@\\w)(.*)$',
-    '^(\\w)(.*)$',
-    '',
-    '^[#/](.*)$',
-    '',
-    '^[~/](.*)$',
-    '',
-    '^[&/](.*)$',
-    '',
-    '^[$/](.*)$',
-    '',
-    '^[+/](.*)$',
-    '',
-    '^[\\^/](.*)$',
-    '',
-    '^[@/](.*)$',
-    '',
-    '^[%/](.*)$',
-    '',
-    '^[;/](.*)$',
-    '',
-    '^[./]',
-    '',
-    '^[../]'
-  ],
   insertPragma: false,
   jsxSingleQuote: true,
   printWidth: 80,
@@ -84,5 +32,7 @@ export default {
     'prettier-plugin-sh',
     'prettier-plugin-svelte',
     'prettier-plugin-tailwindcss'
-  ]
+  ],
+  // Sorted imports
+  ...sortedImports
 }
