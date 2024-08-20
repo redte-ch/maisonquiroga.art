@@ -9,10 +9,8 @@ import { parser } from 'typescript-eslint'
 import restrictedImports from './src/config/imports-policy.mjs'
 
 const standard = neostandard({
-  ignores: [
-    ...neostandard.resolveIgnoresFromGitignore(),
-    '**/should-be-ignored/**'
-  ],
+  ignores: neostandard.resolveIgnoresFromGitignore(),
+  noStyle: true,
   ts: true
 })
 
