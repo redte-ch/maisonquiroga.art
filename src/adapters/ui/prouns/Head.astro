@@ -1,6 +1,4 @@
 ---
-/* eslint-disable astro/no-conflict-set-directives,astro/valid-compile */
-
 import { getImage } from 'astro:assets'
 
 import resolveConfig from 'tailwindcss/resolveConfig'
@@ -9,7 +7,7 @@ import tailwindConfig from '=/tailwind.config'
 
 import MetaGeo from ';/blocks/Meta/MetaGeo.svelte'
 
-import css from ';/assets/styles/global.css'
+import ';/assets/styles/global.css'
 
 const {
   url,
@@ -104,7 +102,3 @@ const schema = {
     type='application/ld+json'
   />
 </head>
-
-<style set:html={css}>
-  /* stylelint-disable no-empty-source */
-</style>

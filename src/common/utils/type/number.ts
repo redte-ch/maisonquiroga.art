@@ -5,7 +5,7 @@
  */
 
 /** To narrow down value types. */
-import type { Refinable } from '$/types'
+import type { Refinable } from '$/types.ts'
 
 export type IsNumber = Refinable<unknown, number>
 

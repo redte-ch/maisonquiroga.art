@@ -16,7 +16,6 @@
     "check:eslint": "eslint .",
     "check:prettier": "prettylint .",
     "check:stylelint": "stylelint '**/*.{css,astro,svelte}'",
-    "check:todo": "leasot src/**/*.ts",
     "dev": "astro dev",
     "format": "run-s format:eslint format:prettier format:stylelint",
     "format:eslint": "yarn check:eslint --fix",
@@ -27,7 +26,8 @@
     "prepare:husky": "husky",
     "prepare:pip": "pip install -r requirements.txt",
     "preview": "astro preview",
-    "test": "vitest --run"
+    "test": "vitest --run",
+    "todo": "leasot src/**/*.{js,ts,cjs,mjs}"
   },
   "devDependencies": {
     "@archoleat/stylelint-config-extended-scss": "^1.6.12",
