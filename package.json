@@ -10,7 +10,7 @@
     "npm": ">= 10.0.0"
   },
   "scripts": {
-    "build": "astro check && astro build",
+    "build": "astro build",
     "check": "run-p check:astro check:eslint check:prettier check:stylelint",
     "check:astro": "astro check",
     "check:eslint": "eslint .",

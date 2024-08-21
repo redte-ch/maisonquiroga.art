@@ -1,5 +1,0 @@
-/**
- * Site configuration.
- *
- * @module site
- */

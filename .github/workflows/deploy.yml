@@ -5,10 +5,14 @@ on:
     branches: [main]
   workflow_dispatch:
 
+concurrency:
+  cancel-in-progress: false
+  group: pages
+
 permissions:
   contents: read
-  pages: write
   id-token: write
+  pages: write
 
 jobs:
   build:
@@ -16,28 +20,56 @@ jobs:
 
     env:
       ASTRO_TELEMETRY_DISABLED: 1
+      BUILD_PATH: .
 
     steps:
       - name: Checkout your repository using git
+        id: checkout
         uses: actions/checkout@v4
 
-      - name: Set node
-        uses: actions/setup-node@v4
-
       - name: Set yarn
+        id: yarn
         run: corepack enable
 
+      - name: Set node
+        id: node
+        uses: actions/setup-node@v4
+        with:
+          cache: yarn
+          cache-dependency-path: ./yarn.lock
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Install dependencies
+        id: install
         run: yarn install --frozen-lockfile
+        working-directory: ${{ env.BUILD_PATH }}
 
       - name: Lint
+        id: lint
         run: yarn run check
+        working-directory: ${{ env.BUILD_PATH }}
 
       - name: Test
+        id: test
         run: yarn run test
+        working-directory: ${{ env.BUILD_PATH }}
 
-      - name: Install, build, and upload the site
-        uses: withastro/action@v2
+      - name: Build
+        id: build
+        run: |
+          yarn run build \
+            --site "${{ steps.pages.outputs.origin }}" \
+            --base "${{ steps.pages.outputs.base_path }}"
+        working-directory: ${{ env.BUILD_PATH }}
+
+      - name: Upload
+        id: upload
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.BUILD_PATH }}/dist
 
   deploy:
     needs: build

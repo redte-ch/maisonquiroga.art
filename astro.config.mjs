@@ -11,74 +11,36 @@ import purgecss from 'astro-purgecss'
 import assetMinifier from '@playform/compress'
 import { FontaineTransform } from 'fontaine'
 
-/** @type {boolean} */
-const isProd = process.env.NODE_ENV === 'production'
+import app from './src/config/app.ts'
+import assets from './src/config/assets.ts'
 
-/**
- * @type {object}
- * @todo Move this to a config file.
- */
-const sitemapConfig = {
-  i18n: {
-    defaultLocale: 'fr',
-    locales: { fr: 'fr-FR' }
-  },
-  lastmod: new Date()
-}
-
-/** @type {object} */
-const assetMinifierConfig = {
-  Image: false,
-  SVG: false
-}
-
-/** @type {number} */
-const port = 4321
-
-/**
- * @type {string}
- * @todo Move this to a config file (at least the production URL).
- */
-const site = isProd ? 'https://maisonquiroga.art' : `http://localhost:${port}`
-
-/**
- * @type {object}
- * @todo Move this to a config file.
- */
-const vite = {
-  plugins: [
-    FontaineTransform.vite({
-      fallbacks: ['Helvetica'],
-      resolvePath: (id) => new URL(`./public${id}`, import.meta.url)
-    })
-  ]
-}
+/** @type {'production' | 'development'} */
+const mode = import.meta.env.PROD ? 'production' : 'development'
 
 /** @type {import('astro').AstroUserConfig} */
 // https://astro.build/config
 export default defineConfig({
   build: {
-    assets: 'public',
-    inlineStylesheets: 'always'
+    assets: assets[mode].output,
+    inlineStylesheets: assets[mode].inline
   },
-  compressHTML: true,
+  compressHTML: assets[mode].compression.HTML,
   integrations: [
     svelte(),
-    sitemap(sitemapConfig),
+    sitemap(app[mode].sitemap),
     tailwind(),
     /* @ts-ignore */
     metadata(),
     insights(),
     purgecss(),
-    assetMinifier(assetMinifierConfig),
+    assetMinifier(assets[mode].compression),
     imageCompressor(),
     assetCompressor()
   ],
   output: 'static',
-  server: {
-    port
-  },
-  site,
+  site: app[mode].site,
   trailingSlash: 'always',
-  vite
+  vite: {
+    plugins: [FontaineTransform.vite(assets[mode].fonts(import.meta.url))]
+  }
 })

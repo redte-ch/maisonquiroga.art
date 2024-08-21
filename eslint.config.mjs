@@ -59,7 +59,8 @@ export default [
   {
     files: ['**/*.ts'],
     rules: {
-      '@stylistic/indent': 'off'
+      '@stylistic/indent': 'off',
+      'functional/no-mixed-types': 'off'
     }
   },
   {

@@ -6,7 +6,11 @@ export default [
       'no-restricted-imports': [
         'error',
         {
-          patterns: ['^(?!.*(schema-dts|\\$\\/|\\^\\/)).*$']
+          patterns: [
+            {
+              regex: '^(?!(schema-dts|\\$\\/|\\^\\/)).*$'
+            }
+          ]
         }
       ]
     }
@@ -17,7 +21,7 @@ export default [
       'no-restricted-imports': [
         'error',
         {
-          patterns: ['^(?!.*(schema-dts|\\$\\/|\\@\\/|\\^\\/)).*$']
+          patterns: [{ regex: '^(?!(schema-dts|\\$\\/|@\\/|\\^\\/)).*$' }]
         }
       ]
     }
@@ -28,7 +32,41 @@ export default [
       'no-restricted-imports': [
         'error',
         {
-          patterns: ['^(?!.*(lowdb|\\$\\/utils|\\^\\/ports)).*$']
+          patterns: [
+            {
+              regex: '^(?!(lowdb|\\$/utils|\\$/types|&/)).*$'
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    files: ['src/adapters/ui/**/*'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              regex: '^(?!(astro|svelte|tailwind|\\$/types|=/|\\+/|;/)).*$'
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    files: ['src/adapters/stores/**/*'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              regex: '^(?!(schema-dts|svelte|\\^/|\\+/)).*$'
+            }
+          ]
         }
       ]
     }
@@ -36,4 +74,8 @@ export default [
 ]
 
 // @todo Finish this. Forbid outward dependencies.
-// @todo Fix this, regex not working. Author: Mauko. Date: 2024-08-19
+// @todo extract schema-dts from stores.
+// @todo extract svelte/store, use nano-stores.
+// @todo extract entities from stores.
+// @todo extract svelte/store from ui.
+// @todo extract tailwind config from ui.
